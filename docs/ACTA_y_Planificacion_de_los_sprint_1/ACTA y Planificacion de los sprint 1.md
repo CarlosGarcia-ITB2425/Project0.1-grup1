@@ -5,7 +5,7 @@
    1.2 Participantes y roles (incluyendo Scrum Master)  
      
 2. **Objetivo del Sprint**  
-     
+     Tener la base del proyecto ya montanda en una misma instancia de aws
 3. **Requisitos seleccionados**  
    3.1 Instalación y configuración de Apache  
    3.2 Instalación de PHP-FPM  
