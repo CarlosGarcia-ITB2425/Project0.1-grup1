@@ -12,5 +12,5 @@ Muestra una publicación exitosamente cargada.
 
 - Contenido: "Hola", fechada en "2020-09-28 18:49", confirmando carga dinámica de posts.
 
-(![ ](imgs/image.jpg)
+![ ](imgs/image.jpg)
 
