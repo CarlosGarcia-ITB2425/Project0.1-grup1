@@ -7,13 +7,13 @@ La web funciona correctamente, como se observa en estas capturas de pantalla adj
 
 Esta es la interfaz de "Crear publicación" en la misma app.
 
-![ ](imgs/extagram1.png)
+![ ](imgs/extagramnuevo.png)
 
 - Campo para título:"¿Qué título le pones?
 
 - Campo para descripción:"Escribe un pie de foto...".
 
-- Opciones: "Añadir fichero".
+- Opciones: "Arrastra tu foto aquí o haz clic para seleccionar", permite seleccionar una foto de tu dispositivo o arrastrarla desde tu navegador.
 
 - Botón azul principal: "Compartir foto".
 ​
