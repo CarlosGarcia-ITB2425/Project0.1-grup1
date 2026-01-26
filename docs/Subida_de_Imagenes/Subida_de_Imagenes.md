@@ -12,4 +12,4 @@ Muestra una publicación exitosamente cargada.
 
 - Contenido: "Hola", fechada en "2020-09-28 18:49", confirmando carga dinámica de posts.
 
-![Vista publicación](Project0.1-grup1/docs/Subida_de_Imagenes/imgs/extagram1.png).
+![Vista publicación](docs/Subida_de_Imagenes/imgs/extagram1.png).
