@@ -25,8 +25,8 @@ Muestra una publicación exitosamente cargada.
 
 - Imagen de playa al atardecer con palmeras y mar, renderizada sin problemas.
 
-- Logo "UsuariGram instagram" visible en la esquina superior.
+- Logo "Usuario_Extagram" visible en la esquina superior.
 
-- Contenido: "Hola", fechada en "2020-09-28 18:49", confirmando carga dinámica de posts.
+- Contenido: "Hola", fechada en "2026-01-19 15:54:49", confirmando carga dinámica de posts.
 
 
