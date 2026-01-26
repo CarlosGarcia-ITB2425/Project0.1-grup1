@@ -16,6 +16,10 @@ Esta es la interfaz de "Crear publicación" en la misma app.
 - Opciones: "Arrastra tu foto aquí o haz clic para seleccionar", permite seleccionar una foto de tu dispositivo o arrastrarla desde tu navegador.
 
 - Botón azul principal: "Compartir foto".
+
+### Ejemplo de foto arrastrada desde el navegador
+
+![ ](imgs/m.png)
 ​
 ## Funcionalidad en Publicación 
 
