@@ -1,7 +1,7 @@
 # **Despliegue de la Base de datos**
 
 Primero creamos la estructura de datos persistente:  
-*mkdir \-p \~/mysql/dbdata*  
+mkdir \-p \~/mysql/dbdata  
 ![][image1]  
 Creamos un archivo de instalación para el contenedor de docker:   
 nano [setup-mysql.sh](http://setup-mysql.sh)  
