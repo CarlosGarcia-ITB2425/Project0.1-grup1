@@ -1,7 +1,8 @@
 # **Esquema de red**
 
-![][image1]  
-Explicación del esquema:   
+<img width="604" height="770" alt="Image" src="https://github.com/user-attachments/assets/4137cd1a-3f65-4918-b6f7-7d999aba00a9" />
+
+# Explicación del esquema:
 **1\) Entrada desde Internet**
 
 1. El **usuario (Browser)** hace una petición HTTP/HTTPS.  
