@@ -1,5 +1,5 @@
 **CREACIÓN DE LAS INSTANCIAS Y LOS DOCKERS**
-
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-13.png)
 1. **Despliegue de instancias EC2 con Elastic IPs**
 
 **Creación de las instancias**
@@ -13,19 +13,19 @@ Instancia S2 \- S6 (App):
 Instancia S7 (Database):  
 **t3.micro**
 
-![][image1]
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-21.png)
 
 **Configuración de las Elastic IPs**
 
-![][image2]
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-25.png)
 
 **IP publica para cada instancia**  
-**![][image3]**
+**![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-28.png)**
 
 **Asociamos cada IP elástica a su instancia:**  
-**![][image4]**
+**![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-36.png)**
 
-**![][image5]**
+**![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-41.png)**
 
 **2\. Configuración de Security Groups (Firewall)**
 
@@ -37,7 +37,7 @@ Instancia S7 (Database):
 
 - Permitir Todo paquete como regla de **salida**
 
-| ![][image6] |
+| ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-50.png) |
 | :---- |
 
 **SG-App (S2-S6)**
@@ -48,7 +48,7 @@ Instancia S7 (Database):
 
 - Permitir Todo paquete como regla de **salida**
 
-| ![][image7] |
+| ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-54.png) |
 | :---- |
 
 **SG-DB (S7)**
@@ -58,17 +58,17 @@ Instancia S7 (Database):
 
 - Permitir Todo paquete como regla de **salida**
 
-| ![][image8] |
+| ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-59.png)|
 | :---- |
 
 **Grupos de seguridad:**
 
-| ![][image9] |
+| ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-06.png) |
 | :---- |
 
 **Asignamos los grupos de seguridad a sus respectivas instancias**
 
-| ![][image10] S1: ![][image11] S2-S6: ![][image12] S3: ![][image13]  |
+| ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-14.png) S1: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-19.png) S2-S6: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-23.png) S3: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-27.png)  |
 | :---- |
 
 **Creación de los dockers**
