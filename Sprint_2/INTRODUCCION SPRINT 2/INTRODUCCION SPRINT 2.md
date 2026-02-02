@@ -1,7 +1,8 @@
 **Introducción:**
 
 Crearemos 3 instancias en amazon web service que se repartirán con diferentes dockers cada una:  
-![]() 
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/a78571c95b71c99fdf8ea5050b0f28ff0c3febd3/Sprint_2/INTRODUCCION%20SPRINT%202/img/Captura%20de%20pantalla%20de%202026-02-02%2015-34-47.png)
+
 **Instancia 1:** S1 (Apahce Proxy)  
 Recibe el tráfico del navegador y lo reparte.
 
