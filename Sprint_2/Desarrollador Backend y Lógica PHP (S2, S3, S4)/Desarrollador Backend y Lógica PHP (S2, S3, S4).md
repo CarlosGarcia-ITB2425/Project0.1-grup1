@@ -15,8 +15,8 @@ Si entramos en el directorio **img** veremos el directorio uploads donde se guar
 ![][image2]  
 Para verificar que docker y docker-compose estan instalados correctamente y saber su version utilizaremos las siguientes comandas.
 ```bash
-**docker compose version**    
-**docker \--version**
+docker compose version
+docker \--version
 ```
 
 ![][image3]
