@@ -54,6 +54,8 @@ Se utilizan imágenes ligeras de httpd:2.4 para S5 y S6, mapeando volúmenes loc
 ### Configuración de Docker Compose (S5 y S6)
 
 
+![Texto alternativo](img/s5.png)  
+
 ## 4. Estructura de Archivos y Verificación
 Es crucial que la estructura de directorios en el host coincida con los volúmenes montados para que los recursos sean accesibles.
 
