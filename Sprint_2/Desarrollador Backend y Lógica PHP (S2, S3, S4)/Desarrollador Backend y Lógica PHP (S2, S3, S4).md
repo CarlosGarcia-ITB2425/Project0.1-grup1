@@ -249,6 +249,7 @@ services:
   s5\_images:  
     image: httpd:2.4  
     container\_name: s5\_images  
+[image1]: 
     ports: \["8085:80"\]  
     \# Mapeamos la carpeta de imágenes para que sean visibles  
     volumes:  
@@ -316,5 +317,3 @@ Puertos expuestos:
 9004 → upload.php (S4)  
 8085 → static/img/uploads/ (S5)  
 8086 → static/css/ (S6)
-
-[image1]: 
