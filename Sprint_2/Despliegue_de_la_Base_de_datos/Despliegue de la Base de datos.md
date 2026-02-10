@@ -1,4 +1,4 @@
-# **Despliegue de la Base de datos
+# Despliegue de la Base de datos
 
 Primero creamos la estructura de datos persistente:  
 ```bash
