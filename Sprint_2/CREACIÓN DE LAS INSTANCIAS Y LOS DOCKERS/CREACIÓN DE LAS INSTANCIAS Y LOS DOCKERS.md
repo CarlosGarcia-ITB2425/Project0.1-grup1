@@ -27,7 +27,7 @@ Instancia S7 (Database):
 
 **![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-41.png)**
 
-**2\. Configuración de Security Groups (Firewall)**
+## **2\. Configuración de Security Groups (Firewall)**
 
 **SG-Proxy (S1)**
 
@@ -71,7 +71,7 @@ Instancia S7 (Database):
 | ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-14.png) S1: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-19.png) S2-S6: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-23.png) S3: ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-51-27.png)  |
 | :---- |
 
-**Creación de los dockers**
+## **3. Creación de los dockers**
 
 He de conectarme por SSH a cada una de las maquinas y ejecutar los siguientes comandos.  
 S1:
