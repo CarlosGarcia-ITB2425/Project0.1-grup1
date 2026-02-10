@@ -9,17 +9,17 @@ En este apartado verificaremos la estructura del projecto que esta montado dentr
 Una vez conectados a la estancia dos haremos ls y no meteremos en el directorio app.  
 En este directorio ira los archivos necesarios para que la web funcione.
 
-![][image1]  
+![Texto alternativo](img/img1.png)  
 Si entramos en el directorio img veremos el directorio uploads donde se guardaran las imagenes qeu se suban desde la web.
 
-![][image2]  
+![Texto alternativo](img/img2.png)  
 Para verificar que docker y docker-compose estan instalados correctamente y saber su version utilizaremos las siguientes comandas.
 ```bash
 docker compose version
 docker \--version
 ```
 
-![][image3]
+![Texto alternativo](img/img3.png) 
 
 # 2.Creación de scripts PHP dinámicos (extagram.php y upload.php)
 
@@ -129,8 +129,8 @@ codigo actual:
 \</body\>  
 \</html\>
 ```
-![][image4]  
-![][image5]
+![Texto alternativo](img/img4.png)   
+![Texto alternativo](img/img5.png) 
 
 ## 2.2 Upload.php  
 Con el archivo upload.php se ha hecho algo parecido, se ha adaptado el archivo anterior para que tenga redundancia con los contenedores, con los otros sistemas y estancias.
@@ -179,14 +179,14 @@ if ($\_SERVER\['REQUEST\_METHOD'\] \== 'POST') {
 }  
 ?\>
 ```
-![][image6]
+![Texto alternativo](img/img6.png) 
 
 Verificaciones:
 ```bash
 ls \-la \.php  
 grep "172.31.67.233" \.php
 ```
-![][image7]
+![Texto alternativo](img/img7.png) 
 
 # 
 
@@ -267,8 +267,8 @@ services:
     restart: unless-stopped
 ```
 
-![][image8]  
-![][image9]
+![Texto alternativo](img/img8.png)   
+![Texto alternativo](img/img9.png) 
 
 # 4.Permisos y Despliegue
 
@@ -280,8 +280,8 @@ docker compose down
 docker compose up \-d
 ```
   
-![][image10]  
-![][image11]
+![Texto alternativo](img/img10.png)  
+![Texto alternativo](img/img11.png)  
 
 #  5: Verificaciones
 
@@ -289,27 +289,27 @@ Ahora haremos verificaciones para ver si se han aplicado bien las configuracione
 ```bash
 docker ps
 ```
-![][image12]
+![Texto alternativo](img/img12.png)  
 
 ```bash
 curl localhost:8086/css/style.css | head \-3
 ```  
-![][image13]
+![Texto alternativo](img/img13.png)  
 
 ```bash
 curl localhost:9002/extagram.php | grep "post-card"
 ``` 
-![][image14]
+![Texto alternativo](img/img14.png)  
 
 ```bash
 curl \-I localhost:9004/upload.php
 ```  
-![][image15]
+![Texto alternativo](img/img15.png)  
 
 ```bash
 curl localhost:8085/uploads/
 ```
-![][image16]
+![Texto alternativo](img/img16.png)  
 
 Puertos expuestos:  
 9002 → extagram.php (S2)  
