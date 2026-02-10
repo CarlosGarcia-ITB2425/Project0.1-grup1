@@ -53,24 +53,7 @@ Se utilizan imágenes ligeras de httpd:2.4 para S5 y S6, mapeando volúmenes loc
 
 ### Configuración de Docker Compose (S5 y S6)
 
- S5: Servidor de Imágenes de Usuario
-s5_images:
-  image: httpd:2.4
-  container_name: s5_images
-  ports:
-    - "8085:80"
-  volumes:
-    - [cite_start]./static/img:/usr/local/apache2/htdocs:ro [cite: 100, 103, 105]
 
- S6: Servidor de Activos del Sistema
-s6_static:
-  image: httpd:2.4
-  container_name: s6_static
-  ports:
-    - "8086:80"
-  volumes:
-    - [cite_start]./static:/usr/local/apache2/htdocs:ro [cite: 107, 110, 113]
-    
 ## 4. Estructura de Archivos y Verificación
 Es crucial que la estructura de directorios en el host coincida con los volúmenes montados para que los recursos sean accesibles.
 
