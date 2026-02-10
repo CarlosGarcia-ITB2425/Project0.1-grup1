@@ -71,3 +71,6 @@ Se puede verificar que el servidor S6 responde correctamente mediante un comando
 Bash
 `curl -I http://localhost:8086/css/style.css`
 
+
+![Texto alternativo](img/curl.png)  
+
