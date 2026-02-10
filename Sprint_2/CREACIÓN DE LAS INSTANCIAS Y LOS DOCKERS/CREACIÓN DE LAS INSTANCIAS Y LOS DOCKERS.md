@@ -1,6 +1,6 @@
 # **CREACIÓN DE LAS INSTANCIAS Y LOS DOCKERS**
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/c9e147cfc56791b8b12a7b861e6630b9b4bdda57/Sprint_2/CREACI%C3%93N%20DE%20LAS%20INSTANCIAS%20Y%20LOS%20DOCKERS/img/Captura%20de%20pantalla%20de%202026-02-02%2015-50-13.png)
-1. **Despliegue de instancias EC2 con Elastic IPs**
+## 1.Despliegue de instancias EC2 con Elastic IPs
 
 **Creación de las instancias**
 
