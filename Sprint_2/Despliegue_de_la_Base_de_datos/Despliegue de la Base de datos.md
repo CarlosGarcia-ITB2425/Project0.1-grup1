@@ -1,5 +1,5 @@
-# Despliegue de la Base de datos
-
+## Despliegue de la Base de datos
+### 1. Creacion del Docker 
 Primero creamos la estructura de datos persistente:  
 ```bash
 mkdir \-p \~/mysql/dbdata
@@ -57,6 +57,7 @@ Verificamos, nos debe salir unless-stopped:
 docker inspect \-f '{{.HostConfig.RestartPolicy.Name}}' s7-mysql
 ```
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/2c67ae2c73741f6d256d0b7a3be8855976f919af/Sprint_2/Despliegue_de_la_Base_de_datos/img/Screenshot%202026-01-31%20182029.png)
+### 2. Creacion de la Base De Datos
 Entrar a MySQL y comprobar acceso:  
 ```bash
 docker exec \-it s7-mysql mysql \-u extauser \-p
@@ -85,6 +86,7 @@ Instalamos el cliente de MAriaDB oficial de amazon:
 sudo dnf install \-y mariadb105
 ```
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/2c67ae2c73741f6d256d0b7a3be8855976f919af/Sprint_2/Despliegue_de_la_Base_de_datos/img/Screenshot%202026-01-31%20182135.png)
+### 3. Comprobación del funcionamiento de la base de datos desde un servidor externo
 Nos conectamos a la base de datos mediante la ip privada y el usuario extauser en la base de datos extagram con la contraseña extapass:  
 ```bash
 mysql \-h 172.31.67.233 \-u extauser \-p extagram
