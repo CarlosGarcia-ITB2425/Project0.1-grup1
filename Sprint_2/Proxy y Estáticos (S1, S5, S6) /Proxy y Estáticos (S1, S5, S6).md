@@ -28,7 +28,7 @@ Apache
 
 (Nota: Los puertos corresponden a las instancias de la aplicación en ejecución )
 
-Reglas de Segregación de Rutas
+### Reglas de Segregación de Rutas
 Para optimizar la respuesta, se redirigen peticiones específicas a servidores especializados:
 
 Recurso	Ruta URL	Destino (Servidor)
