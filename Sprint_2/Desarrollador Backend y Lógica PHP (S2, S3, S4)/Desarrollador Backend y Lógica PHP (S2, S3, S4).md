@@ -311,9 +311,3 @@ curl localhost:8085/uploads/
 ```
 ![Texto alternativo](img/img16.png)  
 
-Puertos expuestos:  
-9002 → extagram.php (S2)  
-9003 → extagram.php (S3)   
-9004 → upload.php (S4)  
-8085 → static/img/uploads/ (S5)  
-8086 → static/css/ (S6)
