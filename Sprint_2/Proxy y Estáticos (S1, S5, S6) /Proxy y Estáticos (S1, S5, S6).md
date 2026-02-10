@@ -40,6 +40,8 @@ Estáticos del sistema	/css/, /preview.svg
 
 `http://172.31.31.80:8086/ (S6)` 
 
+![Texto alternativo](img/css.png)  
+
 Imágenes de usuario	/uploads/	
 
 `http://172.31.31.80:8685/uploads/ (S5)` 
@@ -48,11 +50,12 @@ Lógica General	/ (Raíz)
 
 `balancer://mycluster/ (S2/S3)` 
 
+![Texto alternativo](img/carpetas.png)  
+
 ## 3. Despliegue de Servidores Estáticos
 Se utilizan imágenes ligeras de httpd:2.4 para S5 y S6, mapeando volúmenes locales en modo de solo lectura (ro).
 
 ### Configuración de Docker Compose (S5 y S6)
-
 
 ![Texto alternativo](img/s5.png)  
 
