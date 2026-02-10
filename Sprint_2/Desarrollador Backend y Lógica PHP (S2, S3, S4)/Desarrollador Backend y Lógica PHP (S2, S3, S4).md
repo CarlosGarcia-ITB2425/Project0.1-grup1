@@ -2,7 +2,7 @@
 
 En este apartado se detalla la implementación del Bloque 3 del Sprint 2 por donde se despliegan los contenedores S2, S3 y S4 en la Instancia 2 utilizando Apache \+ PHP 8.3. Se adaptan los scripts extagram.php y upload.php del Sprint 1 para conectarse a la base de datos MySQL S7 y utilizar el volumen compartido \~/app/statics/img/uploads/ con el contenedor S5. Los contenedores S2/S3 proporcionan redundancia para mostrar el feed de publicaciones mientras S4 procesa las subidas de imágenes, garantizando persistencia tanto en el sistema de archivos como en la base de datos remota.
 
-# 1\. Verificar estructura actual y versiones Docker
+## 1\. Verificar estructura actual y versiones Docker
 
 En este apartado verificaremos la estructura del projecto que esta montado dentro del directorio app i verificaremos las versiones de docker i docker-compose instalados previamente.
 
@@ -21,11 +21,11 @@ docker \--version
 
 ![Texto alternativo](img/img3.png) 
 
-# 2.Creación de scripts PHP dinámicos (extagram.php y upload.php)
+## 2.Creación de scripts PHP dinámicos (extagram.php y upload.php)
 
 En el Paso 2 se crean desde cero los scripts PHP dinámicos extagram.php y upload.php adaptados del Sprint 1 a la arquitectura distribuida. extagram.php implementa el formulario de subida (dirigido a S4) y el listado de publicaciones desde la base de datos MySQL S7, utilizando CSS de S6 e imágenes de S5 /uploads/. Los contenedores S2/S3 proveen redundancia para esta funcionalidad conectándose a la DB remota y al volumen compartido de imágenes.
 
-## 2.1 extagrma.php
+### 2.1 extagrma.php
 
 En este sprint se ha utilizado el mismo codigo base de extragram, pero se ha tenido que adaptar para qeu funcione con los conetenedor y tenga connexion con las otras estancias.
 
@@ -132,7 +132,7 @@ codigo actual:
 ![Texto alternativo](img/img4.png)   
 ![Texto alternativo](img/img5.png) 
 
-## 2.2 Upload.php  
+### 2.2 Upload.php  
 Con el archivo upload.php se ha hecho algo parecido, se ha adaptado el archivo anterior para que tenga redundancia con los contenedores, con los otros sistemas y estancias.
 
 Codigo actual: 
@@ -190,7 +190,7 @@ grep "172.31.67.233" \.php
 
 # 
 
-# 3.Docker-compose.yml
+## 3.Docker-compose.yml
 
 Una vez tenemos la base del projecto hecha toca modificar el directorio docker\_compose donde se crean dentro de el los contenedores.
 
@@ -270,7 +270,7 @@ services:
 ![Texto alternativo](img/img8.png)   
 ![Texto alternativo](img/img9.png) 
 
-# 4.Permisos y Despliegue
+## 4.Permisos y Despliegue
 
 En este punto esta todo hecho pero para qeu funcione tenemos que darle permisos de escritura a los directorios ya que Apache dentro de docker corre como www-data y necesita persissos para los volumenes compartidos.
 ```bash
@@ -283,7 +283,7 @@ docker compose up \-d
 ![Texto alternativo](img/img10.png)  
 ![Texto alternativo](img/img11.png)  
 
-#  5: Verificaciones
+##  5: Verificaciones
 
 Ahora haremos verificaciones para ver si se han aplicado bien las configuraciones y cambios.
 ```bash
