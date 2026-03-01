@@ -208,23 +208,40 @@ Javier \- Giuseppe Suarez
          sudo nano /etc/ssh/sshd\_config
 
    Luego los parametros serian estos
-     
+
+   LoginGraceTime
+
          LoginGraceTime 30
-     
+   PermitRootLogin
+   
          PermitRootLogin no   
-     
+
+   MaxAuthTries
+   
          MaxAuthTries 3
-     
+
+   MaxSessions
+   
          MaxSessions 2
-     
+
+   PasswordAuthentication
+   
          PasswordAuthentication yes  
-     
+
+   AllowTcpForwarding
+   
          AllowTcpForwarding no 
-     
+
+   ClientAliveInterval
+   
          ClientAliveInterval 300
-     
+
+   ClientAliveCountMax
+   
          ClientAliveCountMax 0 
-     
+
+   Comprobación
+   
          sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config  
    
 5. ### **Firewalld** {#firewalld}
@@ -259,8 +276,11 @@ Javier \- Giuseppe Suarez
 
    Permitimos el tráfico para las conexiones HTTP y HTTPS
 
+   **HTTP**
+   
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=http
-
+   **HTTPS**
+   
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=https
 
    **Servicio DNS**   
@@ -275,7 +295,7 @@ Javier \- Giuseppe Suarez
 
          sudo firewall-cmd \--reload
    
-7. ### **Lynis** {#lynis-1}
+8. ### **Lynis** {#lynis-1}
   
    Igual como en la instancia 1 procederemos a la implementación de dicha herramienta   
 
@@ -324,24 +344,42 @@ Javier \- Giuseppe Suarez
      
    Modificaremos el archivo ssh con
 
-         sudo nano /etc/ssh/sshd\_config  
+         sudo nano /etc/ssh/sshd\_config
+
+   LoginGraceTime
 
          LoginGraceTime 30
-     
+
+   PermitRootLogin
+   
          PermitRootLogin no   
-     
+
+   MaxAuthTries
+   
          MaxAuthTries 3
-     
+   
+   MaxSessions
+   
          MaxSessions 2
-     
+   
+   PasswordAuthentication
+
          PasswordAuthentication yes  
-     
-         AllowTcpForwarding no 
-     
+
+   AllowTcpForwarding
+   
+         AllowTcpForwarding no
+   
+   ClientAliveInterval
+   
          ClientAliveInterval 300
-     
-         ClientAliveCountMax 0 
-     
+
+   ClientAliveCountMax
+   
+         ClientAliveCountMax 0
+
+   Comprobación
+   
          sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config  
 
 2. ### **Firewalld** {#firewalld-1}
@@ -376,7 +414,11 @@ Javier \- Giuseppe Suarez
 
    Permitimos el tráfico para las conexiones HTTP y HTTPS
 
+   **HTTP**
+
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=http
+
+   **HTTPS**
 
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=https
 
