@@ -1,238 +1,39 @@
-# HARDENING PROFESIONAL DEL SISTEMA OPERATIVO
-
-**Grupo 1**  
-**Integrantes:** Bryan Aguilera Nieto – Izan Fernandez – Javier – Giuseppe Suarez  
-**Profesores:** Sergi – David Sicart  
-
----
-
-# CONFIGURACION DE INSTANCIA 1
-
-## 1. SSH
-
-### a. Banner de Acceso
-
-Primero debemos activarlo editando el archivo de configuracion y buscando la linea Banner:
-
-```bash
-sudo nano /etc/ssh/sshd_config
-
-Quitamos la # y dejamos la linea asi:
-
-Banner /etc/issue.net
-
-Para crear el contenido del banner:
-
-echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
+HARDENING PROFESIONAL DEL SISTEMA OPERATIVOBlindando la infraestructura de Extagram en AWS N°: GRUPO 1 Integrantes: Bryan Aguilera Nieto - Izan Fernandez Javier - Giuseppe Suarez Profesores: Sergi - David Sicart ÍNDICECONFIGURACIÓN DE INSTANCIA 11.1 SSH1.2 Banner de Acceso1.3 Seguridad en SSH1.4 UFW (Firewall)1.5 Lynis (Auditoría)CONFIGURACIÓN DE INSTANCIA 22.1 SSH2.2 Firewalld2.3 LynisCONFIGURACIÓN DE INSTANCIA 33.1 SSH3.2 Firewalld3.3 Lynis<a name="instancia1"></a>1. CONFIGURACIÓN DE INSTANCIA 1 <a name="ssh1"></a>1.1 SSH <a name="banner1"></a>1.2 Banner de Acceso Para activarlo, editamos el archivo de configuración y buscamos la línea Banner:Bashsudo nano /etc/ssh/sshd_config
+Definimos la ruta: Banner /etc/issue.net. Para crear el contenido del banner:Bashecho "****************************************************************" | sudo tee /etc/issue /etc/issue.net
 echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
 echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
 echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
-
-Reiniciamos el servicio SSH:
-
-sudo systemctl restart ssh
-b. Seguridad en SSH
-
-Editamos el archivo:
-
-sudo nano /etc/ssh/sshd_config
-
-Configuraciones aplicadas:
-
-LoginGraceTime 30
-PermitRootLogin no
-MaxAuthTries 3
-MaxSessions 2
-PasswordAuthentication yes
-AllowTcpForwarding no
-ClientAliveInterval 300
-ClientAliveCountMax 0
-
-Comprobamos configuracion:
-
-sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
-2. UFW
-
-Configuracion del firewall:
-
-sudo ufw default deny incoming
+Reiniciamos el servicio:Bashsudo systemctl restart ssh
+<a name="seguridad1"></a>1.3 Seguridad en SSH Modificamos los siguientes parámetros en /etc/ssh/sshd_config:LoginGraceTime 30: 30 segundos para iniciar sesión.PermitRootLogin no: Impide acceso directo como root.MaxAuthTries 3: Desconexión tras 3 fallos.MaxSessions 2: Máximo de sesiones simultáneas.PasswordAuthentication yes: (Opcional según requerimiento).AllowTcpForwarding no: Bloquea "puentes" entre servidores.ClientAliveInterval 300: Aviso de actividad cada 5 min.ClientAliveCountMax 0: Cierre inmediato si no hay respuesta al aviso.Verificación de cambios:Bashsudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
+<a name="ufw1"></a>1.4 UFW (Firewall) Configuración de reglas por defecto y apertura de puertos:Bashsudo ufw default deny incoming
 sudo ufw default allow outgoing
 sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw enable
-
-El mensaje:
-
-Command may disrupt existing ssh connections. Proceed?
-
-Indica que podriamos perder la conexion SSH si no esta permitido el puerto 22.
-
-3. Lynis
-
-Instalacion:
-
-sudo apt install lynis
-
-Auditoria del sistema:
-
+<a name="lynis1"></a>1.5 Lynis Instalación y auditoría:Bashsudo apt install lynis -y
 sudo lynis audit system
-
-Tras la auditoria se obtuvo una puntuacion aproximada de 72/100, indicando un buen nivel de hardening.
-
-CONFIGURACION DE INSTANCIA 2
-1. SSH
-
-Editar configuracion:
-
-sudo nano /etc/ssh/sshd_config
-a. Banner de Acceso
-
-Activamos la linea:
-
-Banner /etc/issue.net
-
-Creamos el banner:
-
-echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
-echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
-echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
-echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
-
-Reiniciamos:
-
+Resultado: Hardening index 72.<a name="instancia2"></a>2. CONFIGURACIÓN DE INSTANCIA 2 <a name="ssh2"></a>2.1 SSH (Misma configuración de Banner y Seguridad que Instancia 1) Bashsudo nano /etc/ssh/sshd_config
 sudo systemctl restart sshd
-b. Seguridad en SSH
-
-Configuracion aplicada:
-
-LoginGraceTime 30
-PermitRootLogin no
-MaxAuthTries 3
-MaxSessions 2
-PasswordAuthentication yes
-AllowTcpForwarding no
-ClientAliveInterval 300
-ClientAliveCountMax 0
-
-Comprobacion:
-
-sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
-2. Firewalld
-Instalacion e inicio
-sudo dnf install firewalld -y
+<a name="firewalld2"></a>2.2 Firewalld Instalación e inicio:Bashsudo dnf install firewalld -y
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
-3. Configuracion de Reglas
-
-Trabajamos en zona docker para segmentacion.
-
-Permitir SSH:
-
-sudo firewall-cmd --permanent --zone=docker --add-service=ssh
-
-Permitir HTTP y HTTPS:
-
+Configuración de reglas en zona docker:Bashsudo firewall-cmd --permanent --zone=docker --add-service=ssh
 sudo firewall-cmd --permanent --zone=docker --add-service=http
 sudo firewall-cmd --permanent --zone=docker --add-service=https
-
-Permitir DNS:
-
 sudo firewall-cmd --permanent --zone=docker --add-service=dns
-
-Aplicar cambios:
-
 sudo firewall-cmd --reload
-4. Lynis
-
-Instalacion:
-
-sudo dnf install lynis -y
-
-Auditoria:
-
+<a name="lynis2"></a>2.3 Lynis Bashsudo apt yum lynis
 sudo lynis audit system
-CONFIGURACION DE INSTANCIA 3
-1. SSH
-
-Editar archivo:
-
-sudo nano /etc/ssh/sshd_config
-a. Banner de Acceso
-
-Activamos:
-
-Banner /etc/issue.net
-
-Crear banner:
-
-echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
-echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
-echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
-echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
-
-Reiniciar:
-
+<a name="instancia3"></a>3. CONFIGURACIÓN DE INSTANCIA 3 <a name="ssh3"></a>3.1 SSH(Configuración idéntica a las instancias anteriores) Bashsudo nano /etc/ssh/sshd_config
 sudo systemctl restart sshd
-b. Seguridad en SSH
-
-Configuracion:
-
-LoginGraceTime 30
-PermitRootLogin no
-MaxAuthTries 3
-MaxSessions 2
-PasswordAuthentication yes
-AllowTcpForwarding no
-ClientAliveInterval 300
-ClientAliveCountMax 0
-
-Comprobacion:
-
-sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
-2. Firewalld
-
-Instalacion:
-
-sudo dnf install firewalld -y
-
-Inicio y habilitacion:
-
+<a name="firewalld3"></a>3.2 Firewalld Bashsudo dnf install firewalld -y
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
-3. Configuracion de Reglas
-
-Permitir SSH:
-
 sudo firewall-cmd --permanent --zone=docker --add-service=ssh
-
-Permitir HTTP y HTTPS:
-
 sudo firewall-cmd --permanent --zone=docker --add-service=http
 sudo firewall-cmd --permanent --zone=docker --add-service=https
-
-Permitir DNS:
-
 sudo firewall-cmd --permanent --zone=docker --add-service=dns
-
-Aplicar cambios:
-
 sudo firewall-cmd --reload
-4. Lynis
-
-Instalacion:
-
-sudo dnf install lynis -y
-
-Auditoria:
-
+<a name="lynis3"></a>3.3 Lynis Bashsudo dnf install lynis -y
 sudo lynis audit system
-CONCLUSION
-
-Se ha aplicado hardening en tres instancias mediante:
-
-Configuracion avanzada de SSH
-
-Implementacion de firewall (UFW / Firewalld)
-
-Auditoria de seguridad con Lynis
