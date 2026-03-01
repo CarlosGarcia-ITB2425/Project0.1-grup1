@@ -11,13 +11,10 @@ Javier \- Giuseppe Suarez
 
 # ÍNDICE
 
-[CONFIGURACIÓN DE INSTANCIA 1](#configuracion-inst1)
-1. [SSH](#ssh-inst1)
-   1. [Banner de Acceso](#banner-inst1)
-   2. [Seguridad en SSH](#seguridad-ssh-inst1)
-2. [UFW](#ufw-inst1)
-   1. [Modificaciones del Firewall](#modificaciones-firewall-inst1)
-3. [Lynis](#lynis-inst1)
+- [Configuración de Instancia 1](#configuracion-inst1)
+  - [SSH](#ssh-inst1)
+    - [Banner de Acceso](#banner-inst1)
+    - [Seguridad en SSH](#seguridad-ssh-inst1)
 
 [CONFIGURACIÓN DE INSTANCIA 2](#configuracion-inst2)
 1. [SSH](#ssh-inst2)
@@ -37,10 +34,9 @@ Javier \- Giuseppe Suarez
    2. [Configuración de Reglas](#reglas-firewalld-inst3)
 3. [Lynis](#lynis-inst3)
 
-# CONFIGURACIÓN DE INSTANCIA 1 {#configuracion-inst1}
+# Configuracion Instancia 1 {#configuracion-inst1}
 
 ## SSH {#ssh-inst1}
-
 
 ### Banner de Acceso {#banner-inst1}
 
@@ -72,7 +68,6 @@ Javier \- Giuseppe Suarez
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Mensaje-Banner-INST1.png)
 
 ### Seguridad en SSH {#seguridad-ssh-inst1}
-
    Aquí hemos modificado 3 cosas en el archivo
 
          sudo nano /etc/ssh/sshd\_config
