@@ -1,5 +1,7 @@
 # **HARDENING PROFESIONAL DEl SISTEMA OPERATIVO**
 
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/2710818a636ba2c078fdf18520920ec3124fc8cc/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Portada.png)
+
 **N°:** GRUPO 1
 
 **Integrantes:** Bryan Aguilera Nieto \- Izan Fernandez   
