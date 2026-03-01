@@ -15,24 +15,27 @@ Javier \- Giuseppe Suarez
   - [SSH](#ssh-inst1)
     - [Banner de Acceso](#banner-inst1)
     - [Seguridad en SSH](#seguridad-ssh-inst1)
+  - [UFW](#ufw-inst1)
+  - [Lynis](#lynis-inst1)
 
-[CONFIGURACIÓN DE INSTANCIA 2](#configuracion-inst2)
-1. [SSH](#ssh-inst2)
-   1. [Banner de Acceso](#banner-inst2)
-   2. [Seguridad en SSH](#seguridad-ssh-inst2)
-2. [Firewalld](#firewalld-inst2)
-   1. [Instalación e Inicio](#instalacion-firewalld-inst2)
-   2. [Configuración de Reglas](#reglas-firewalld-inst2)
-3. [Lynis](#lynis-inst2)
+- [Configuración de Instancia 2](#configuracion-inst2)
+  - [SSH](#ssh-inst2)
+    - [Banner de Acceso](#banner-inst2)
+    - [Seguridad en SSH](#seguridad-ssh-inst2)
+  - [Firewalld](#firewalld-inst2)
+    - [Instalación e Inicio](#instalacion-firewalld-inst2)
+    - [Configuración de Reglas](#reglas-firewalld-inst2)
+  - [Lynis](#lynis-inst2)
 
-[CONFIGURACIÓN DE INSTANCIA 3](#configuracion-inst3)
-1. [SSH](#ssh-inst3)
-   1. [Banner de Acceso](#banner-inst3)
-   2. [Seguridad en SSH](#seguridad-ssh-inst3)
-2. [Firewalld](#firewalld-inst3)
-   1. [Instalación e Inicio](#instalacion-firewalld-inst3)
-   2. [Configuración de Reglas](#reglas-firewalld-inst3)
-3. [Lynis](#lynis-inst3)
+- [Configuración de Instancia 3](#configuracion-inst3)
+  - [SSH](#ssh-inst3)
+    - [Banner de Acceso](#banner-inst3)
+    - [Seguridad en SSH](#seguridad-ssh-inst3)
+  - [Firewalld](#firewalld-inst3)
+    - [Instalación e Inicio](#instalacion-firewalld-inst3)
+    - [Configuración de Reglas](#reglas-firewalld-inst3)
+  - [Lynis](#lynis-inst3)
+  #
 
 # Configuracion Instancia 1 {#configuracion-inst1}
 
@@ -106,9 +109,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobaci%C3%B3n-SSH-INST1.png)
 
-5. ### **UFW** {#ufw}
-
-   ### Ahora indicaremos las modificaciones del firewall {#ahora-indicaremos-las-modificaciones-del-firewall}
+### UFW {#ufw-inst1}
 
          sudo ufw default deny incoming
    Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
@@ -141,7 +142,7 @@ Javier \- Giuseppe Suarez
    
    Finalmente, aparece que el firewall ya esta activado e iniciado en el sistema
 
-4. ### **Lynis** {#lynis}
+### Lynis {#lynis-inst1}
 
      
    Con esta herramienta, podremos hacer una auditoría de nuestro servidor  
@@ -162,13 +163,13 @@ Javier \- Giuseppe Suarez
    Tras la auditoría con Lynis, observamos que tenemos una puntuación de 72/100 esto es un éxito ya que hemos implementado seguridad mientras que a su vez hemos optimizado el servidor.  
    Ciertas recomendaciones o avisos no se han implementado, que en este caso es por relación al Kernel, para evitar posibles incompatibilidades con los servidores y servicios desplegados
 
-# **CONFIGURACIÓN DE INSTANCIA 2** {#configuración-de-instancia-2}
+# Configuracion Instancia 2 {#configuracion-inst2}
 
-1. ### **SSH** {#ssh-1}
+## SSH {#ssh-inst2}
 
    Modificaremos el archivo de configuración de SSH para implementar seguridad en cuanto al acceso al servidor web de Extagram  
 
-1. #### **Banner de Acceso**  {#banner-de-acceso-1}
+### Banner de Acceso {#banner-inst2}
 
      
    Como las otras veces, pondremos un banner, para ello activaremos y descomentamos la linea de Banner  
@@ -196,7 +197,7 @@ Javier \- Giuseppe Suarez
    Ahora cuando entremos nos aparecerá este mensaje
 
 
-3. #### **Seguridad en SSH** {#seguridad-en-ssh-1}
+### Seguridad en SSH {#seguridad-ssh-inst2}
 
    Misma configuración que en la instancia 1  
      
@@ -243,11 +244,11 @@ Javier \- Giuseppe Suarez
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobar-SSH-Inst2.png)
 
-5. ### **Firewalld** {#firewalld}
+## Firewalld {#firewalld-inst2}
 
    En esta instancia usaremos el cortafuegos llamado Firewalld
 
-1. #### **Instalación e Inicio** {#instalación-e-inicio}
+### Instalación e Inicio {#instalacion-firewalld-inst2}
 
    Primero vamos a instalarlo  
      
@@ -268,7 +269,7 @@ Javier \- Giuseppe Suarez
          sudo systemctl enable firewalld
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Habilitar-Firewalld-Inst2.png)
    
-6. ### **Configuración de Reglas** {#configuración-de-reglas}
+### Configuración de Reglas {#reglas-firewalld-inst2}
 
    Hemos decidido trabajar en las zonas de docker para segmentar el tráfico y que sea más seguro
 
@@ -310,7 +311,7 @@ Javier \- Giuseppe Suarez
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Reload-Firewalld-Inst2.png)
    
-8. ### **Lynis** {#lynis-1}
+### Lynis {#lynis-inst2}
   
    Igual como en la instancia 1 procederemos a la implementación de dicha herramienta   
 
