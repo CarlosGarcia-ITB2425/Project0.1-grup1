@@ -192,7 +192,7 @@ Javier \- Giuseppe Suarez
      
    Reiniciamos el servicio ssh
 
-         sudo systemctl restart sshd**  
+         sudo systemctl restart sshd
 
    Ahora cuando entremos nos aparecerá este mensaje
 
