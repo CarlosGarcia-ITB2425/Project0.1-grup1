@@ -89,6 +89,8 @@ Javier \- Giuseppe Suarez
 
          sudo nano /etc/ssh/sshd\_config
 
+   Luego los parametros serian estos
+
          LoginGraceTime 30
    Solo tienes 30 segundos para poder iniciar sesión.
 
@@ -203,7 +205,9 @@ Javier \- Giuseppe Suarez
      
    Modificaremos el archivo ssh con
 
-   sudo nano /etc/ssh/sshd\_config  
+         sudo nano /etc/ssh/sshd\_config
+
+   Luego los parametros serian estos
      
          LoginGraceTime 30
      
@@ -319,6 +323,8 @@ Javier \- Giuseppe Suarez
    Misma configuración que en las otras instancias  
      
    Modificaremos el archivo ssh con
+
+         sudo nano /etc/ssh/sshd\_config  
 
          LoginGraceTime 30
      
