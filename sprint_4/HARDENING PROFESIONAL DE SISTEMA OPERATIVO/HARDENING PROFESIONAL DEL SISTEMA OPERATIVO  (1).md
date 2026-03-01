@@ -9,52 +9,34 @@ Javier \- Giuseppe Suarez
 
 **Profesores:** Sergi \- David Sicart
 
-## **ÍNDICE**
+## INDICE
 
-[**CONFIGURACIÓN DE INSTANCIA 1	3**](#configuración-de-instancia-1)
+- [CONFIGURACION DE INSTANCIA 1](#configuracion-de-instancia-1)
+  - [SSH](#ssh)
+    - [Banner de Acceso](#banner-de-acceso)
+    - [Seguridad en SSH](#seguridad-en-ssh)
+  - [UFW](#ufw)
+    - [Ahora indicaremos las modificaciones del firewall](#ahora-indicaremos-las-modificaciones-del-firewall)
+  - [Lynis](#lynis)
 
-1. [SSH	3](#ssh)  
-1. [Banner de Acceso	3](#banner-de-acceso)  
-2. [Seguridad en SSH	6](#seguridad-en-ssh)  
-2. [UFW	7](#ufw)  
-1. [Ahora indicaremos las modificaciones del firewall	7](#ahora-indicaremos-las-modificaciones-del-firewall)
+- [CONFIGURACION DE INSTANCIA 2](#configuracion-de-instancia-2)
+  - [SSH](#ssh-1)
+    - [Banner de Acceso](#banner-de-acceso-1)
+    - [Seguridad en SSH](#seguridad-en-ssh-1)
+  - [Firewalld](#firewalld)
+    - [Instalacion e Inicio](#instalacion-e-inicio)
+    - [Configuracion de Reglas](#configuracion-de-reglas)
+  - [Lynis](#lynis-1)
 
-4\. [Lynis	8](#lynis)
-
-[**CONFIGURACIÓN DE INSTANCIA 2	10**](#configuración-de-instancia-2)
-
-1. [SSH	10](#ssh-1)
-
-   [a. Banner de Acceso	10](#banner-de-acceso-1)
-
-   [b. Seguridad en SSH	12](#seguridad-en-ssh-1)
-
-2. [Firewalld	13](#firewalld)
-
-   [a. Instalación e Inicio	13](#instalación-e-inicio)
-
-   b. [Configuración de Reglas	14](#configuración-de-reglas)
-
-3. [Lynis	15](#lynis-1)
-
-[**CONFIGURACIÓN DE INSTANCIA 3	17**](#configuración-de-instancia-3)
-
-[1\. SSH	17](#ssh-2)
-
-[a. Banner de Acceso	17](#banner-de-acceso-2)
-
-[b. Seguridad en SSH	19](#seguridad-en-ssh-2)
-
-[2\. Firewalld	20](#firewalld-1)
-
-[a. Instalación e inicio	20](#instalación-e-inicio-1)
-
- b. [Configuración de Reglas	21](#configuración-de-reglas-1)
-
-3\. [Lynis	22](#lynis-2)
-
-# 
-
+- [CONFIGURACION DE INSTANCIA 3](#configuracion-de-instancia-3)
+  - [SSH](#ssh-2)
+    - [Banner de Acceso](#banner-de-acceso-2)
+    - [Seguridad en SSH](#seguridad-en-ssh-2)
+  - [Firewalld](#firewalld-1)
+    - [Instalacion e Inicio](#instalacion-e-inicio-1)
+    - [Configuracion de Reglas](#configuracion-de-reglas-1)
+  - [Lynis](#lynis-2)
+    
 # **CONFIGURACIÓN DE INSTANCIA 1** {#configuración-de-instancia-1}
 
 1. ## **SSH** {#ssh}
