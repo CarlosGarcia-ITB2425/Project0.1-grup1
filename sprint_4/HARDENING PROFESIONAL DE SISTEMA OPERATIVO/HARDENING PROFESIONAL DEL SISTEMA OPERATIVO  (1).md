@@ -190,15 +190,16 @@ Javier \- Giuseppe Suarez
 1. ### **SSH** {#ssh-1}
 
    Modificaremos el archivo de configuración de SSH para implementar seguridad en cuanto al acceso al servidor web de Extagram  
-   
 
 1. #### **Banner de Acceso**  {#banner-de-acceso-1}
 
      
    Como las otras veces, pondremos un banner, para ello activaremos y descomentamos la linea de Banner  
      
-         sudo nano /etc/ssh/sshd\_config  
-     
+         sudo nano /etc/ssh/sshd\_config
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Banner-Inst2.png)
+
    Quitamos la \# y pondremos lo siguiente Banner /etc/issue.net  
    Para crear el contenido del banner, ejecutaremos lo siguiente:  
      
@@ -207,10 +208,13 @@ Javier \- Giuseppe Suarez
          echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net
          echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)
      
-     
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Crear-Banner-Inst2.png)
+
    Reiniciamos el servicio ssh
 
          sudo systemctl restart sshd
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Restart-SSH-Inst2.png)
 
    Ahora cuando entremos nos aparecerá este mensaje
 
@@ -258,8 +262,10 @@ Javier \- Giuseppe Suarez
 
    Comprobación
    
-         sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config  
+         sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config
    
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobar-SSH-Inst2.png)
+
 5. ### **Firewalld** {#firewalld}
 
    En esta instancia usaremos el cortafuegos llamado Firewalld
@@ -268,15 +274,22 @@ Javier \- Giuseppe Suarez
 
    Primero vamos a instalarlo  
      
-         sudo dnf install firewalld \-y  
+         sudo dnf install firewalld \-y
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Instalar-Firewalld-Inst2.png)
+
      
    Ahora iniciaremos el servicio  
      
-         sudo systemctl start firewalld  
+         sudo systemctl start firewalld
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Iniciar-Firewalld-Inst2.png)
+
      
    Para finalizar habilitamos para el arranque automático  
      
-         sudo systemctl enable firewalld 	  
+         sudo systemctl enable firewalld
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Habilitar-Firewalld-Inst2.png)
    
 6. ### **Configuración de Reglas** {#configuración-de-reglas}
 
@@ -287,6 +300,8 @@ Javier \- Giuseppe Suarez
    Vamos a permmitir el servicio de ssh
 
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=ssh
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-Firewalld-SSH-Inst2.png)
 
    **Servicios Web**
 
@@ -299,11 +314,16 @@ Javier \- Giuseppe Suarez
    
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=https
 
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-WEB-Inst2.png)
+
    **Servicio DNS**   
 
    Necesario para que nuestro servidor pueda resolver nombres de dominios externos
 
-         sudo firewall-cmd \--permanent \--zone=docker \--add-service=dns   
+         sudo firewall-cmd \--permanent \--zone=docker \--add-service=dns
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-DNS.Inst2.png)
 
    **Aplicar Cambios**
 
@@ -311,15 +331,23 @@ Javier \- Giuseppe Suarez
 
          sudo firewall-cmd \--reload
    
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Reload-Firewalld-Inst2.png)
+   
 8. ### **Lynis** {#lynis-1}
   
    Igual como en la instancia 1 procederemos a la implementación de dicha herramienta   
 
          sudo apt yum lynis
+   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Instalar-Firewalld-Inst2.png)
+   
    Ahora ejecutamos el lynis parala auditoría del sistema
 
          sudo lynis audit system
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/90089e2e1c9c9a6db978182a27ce8393c79f568a/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/2o-ScaneoInst2.png)
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/90089e2e1c9c9a6db978182a27ce8393c79f568a/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/2o-Fin-Scaneo-Inst2.png)
+   
    Tras el análisis de Lynis, obtenemos un índice de hardening alto, pero al igual que el anterior, se han descartado ciertas optimizaciones y / o seguridad para implementar relativas al Kernel, para evitar            posibles incompatibilidades
 
 # **CONFIGURACIÓN DE INSTANCIA 3** {#configuración-de-instancia-3}
