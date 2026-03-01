@@ -154,7 +154,9 @@ Javier \- Giuseppe Suarez
       
          sudo ufw enable
       
-   Iniciamos y habilitamos el firewall UFW  
+   Iniciamos y habilitamos el firewall UFW
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8710f9edd131f10ce5450decb5b5f602f9d70b02/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/REGLAS-UFW.INST1.png)
    
    El mensaje de Command may disrupt existing ssh connections. Proceed? nos indica que habilitando el firewall podríamos perder la conexión mediante ssh, desea continuar?\!  
    
@@ -171,10 +173,15 @@ Javier \- Giuseppe Suarez
      
          sudo apt install lynis
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8710f9edd131f10ce5450decb5b5f602f9d70b02/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Instalaci%C3%B3n-LYNIS-INST1.png)
+
    Ahora ejecutamos el lynis para ver como esta nuestro servidor tras los cambios realizados
 
          sudo lynis audit system
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8710f9edd131f10ce5450decb5b5f602f9d70b02/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/1r%20Scaneo%20LYNIS-INST1.png)
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8710f9edd131f10ce5450decb5b5f602f9d70b02/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Fin-Scaneo-LYNIS-INST1.png)
+   
    Tras la auditoría con Lynis, observamos que tenemos una puntuación de 72/100 esto es un éxito ya que hemos implementado seguridad mientras que a su vez hemos optimizado el servidor.  
    Ciertas recomendaciones o avisos no se han implementado, que en este caso es por relación al Kernel, para evitar posibles incompatibilidades con los servidores y servicios desplegados
 
