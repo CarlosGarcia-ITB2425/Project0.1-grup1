@@ -21,7 +21,7 @@ Quitamos la # y dejamos la linea asi:
 
 Banner /etc/issue.net
 
-Creamos el contenido del banner:
+Para crear el contenido del banner:
 
 echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
 echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
