@@ -1,254 +1,238 @@
 # HARDENING PROFESIONAL DEL SISTEMA OPERATIVO
 
-**Autor:** Giuseppe Suarez  
-**Curso:** ASIX – Ciberseguridad  
-
----
-
-## INDICE
-
-- [CONFIGURACION DE INSTANCIA 1](#configuracion-de-instancia-1)
-  - [SSH](#ssh)
-    - [Banner de Acceso](#banner-de-acceso)
-    - [Seguridad en SSH](#seguridad-en-ssh)
-  - [UFW](#ufw)
-  - [Lynis](#lynis)
-
-- [CONFIGURACION DE INSTANCIA 2](#configuracion-de-instancia-2)
-  - [SSH](#ssh-1)
-    - [Banner de Acceso](#banner-de-acceso-1)
-    - [Seguridad en SSH](#seguridad-en-ssh-1)
-  - [Firewalld](#firewalld)
-  - [Lynis](#lynis-1)
-
-- [CONFIGURACION DE INSTANCIA 3](#configuracion-de-instancia-3)
-  - [SSH](#ssh-2)
-    - [Banner de Acceso](#banner-de-acceso-2)
-    - [Seguridad en SSH](#seguridad-en-ssh-2)
-  - [Firewalld](#firewalld-1)
-  - [Lynis](#lynis-2)
+**Grupo 1**  
+**Integrantes:** Bryan Aguilera Nieto – Izan Fernandez – Javier – Giuseppe Suarez  
+**Profesores:** Sergi – David Sicart  
 
 ---
 
 # CONFIGURACION DE INSTANCIA 1
 
-## SSH
+## 1. SSH
 
-SSH permite la administracion remota segura del servidor mediante cifrado.
+### a. Banner de Acceso
 
-### Instalacion
+Primero debemos activarlo editando el archivo de configuracion y buscando la linea Banner:
 
 ```bash
-sudo apt install openssh-server
-Comprobacion del servicio
-sudo systemctl status ssh
-Banner de Acceso
-
-Editar archivo:
-
-sudo nano /etc/issue.net
-
-Contenido ejemplo:
-
-ACCESO RESTRINGIDO
-Sistema monitorizado.
-Solo personal autorizado.
-
-Configurar en SSH:
-
 sudo nano /etc/ssh/sshd_config
 
-Añadir:
+Quitamos la # y dejamos la linea asi:
 
 Banner /etc/issue.net
 
-Reiniciar servicio:
+Para crear el contenido del banner:
+
+echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
+echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
+echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
+echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
+
+Reiniciamos el servicio SSH:
 
 sudo systemctl restart ssh
-Seguridad en SSH
+b. Seguridad en SSH
 
-Editar:
+Editamos el archivo:
 
 sudo nano /etc/ssh/sshd_config
 
 Configuraciones aplicadas:
 
+LoginGraceTime 30
 PermitRootLogin no
-Port 2222
 MaxAuthTries 3
-PasswordAuthentication no
+MaxSessions 2
+PasswordAuthentication yes
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 0
 
-Reiniciar:
+Comprobamos configuracion:
 
-sudo systemctl restart ssh
-UFW
+sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
+2. UFW
 
-Activar firewall:
+Configuracion del firewall:
 
-sudo ufw enable
-
-Permitir SSH personalizado:
-
-sudo ufw allow 2222/tcp
-
-Permitir HTTP y HTTPS:
-
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow 22/tcp
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
+sudo ufw enable
 
-Ver reglas:
+El mensaje:
 
-sudo ufw status verbose
-Lynis
+Command may disrupt existing ssh connections. Proceed?
+
+Indica que podriamos perder la conexion SSH si no esta permitido el puerto 22.
+
+3. Lynis
 
 Instalacion:
 
 sudo apt install lynis
 
-Auditoria:
+Auditoria del sistema:
 
 sudo lynis audit system
 
-Lynis revisa:
-
-Configuracion SSH
-
-Firewall
-
-Permisos
-
-Servicios activos
-
-Vulnerabilidades
+Tras la auditoria se obtuvo una puntuacion aproximada de 72/100, indicando un buen nivel de hardening.
 
 CONFIGURACION DE INSTANCIA 2
-SSH
+1. SSH
 
-Instalacion:
-
-sudo dnf install openssh-server
-
-Activar servicio:
-
-sudo systemctl enable sshd
-sudo systemctl start sshd
-Banner de Acceso
-
-Editar:
-
-sudo nano /etc/issue.net
-
-Configurar en:
+Editar configuracion:
 
 sudo nano /etc/ssh/sshd_config
+a. Banner de Acceso
 
-Añadir:
+Activamos la linea:
 
 Banner /etc/issue.net
 
-Reiniciar:
+Creamos el banner:
+
+echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
+echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
+echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
+echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
+
+Reiniciamos:
 
 sudo systemctl restart sshd
-Seguridad en SSH
+b. Seguridad en SSH
+
+Configuracion aplicada:
+
+LoginGraceTime 30
 PermitRootLogin no
-Port 2222
 MaxAuthTries 3
-PasswordAuthentication no
+MaxSessions 2
+PasswordAuthentication yes
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 0
 
-Reiniciar servicio:
+Comprobacion:
 
-sudo systemctl restart sshd
-Firewalld
-
-Activar:
-
-sudo systemctl enable firewalld
+sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
+2. Firewalld
+Instalacion e inicio
+sudo dnf install firewalld -y
 sudo systemctl start firewalld
+sudo systemctl enable firewalld
+3. Configuracion de Reglas
 
-Permitir puerto SSH:
+Trabajamos en zona docker para segmentacion.
 
-sudo firewall-cmd --permanent --add-port=2222/tcp
+Permitir SSH:
+
+sudo firewall-cmd --permanent --zone=docker --add-service=ssh
 
 Permitir HTTP y HTTPS:
 
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --zone=docker --add-service=http
+sudo firewall-cmd --permanent --zone=docker --add-service=https
 
-Recargar:
+Permitir DNS:
+
+sudo firewall-cmd --permanent --zone=docker --add-service=dns
+
+Aplicar cambios:
 
 sudo firewall-cmd --reload
-
-Ver reglas:
-
-sudo firewall-cmd --list-all
-Lynis
+4. Lynis
 
 Instalacion:
 
-sudo dnf install lynis
+sudo dnf install lynis -y
 
 Auditoria:
 
 sudo lynis audit system
 CONFIGURACION DE INSTANCIA 3
-SSH
+1. SSH
 
-Instalacion:
+Editar archivo:
 
-sudo apt install openssh-server
+sudo nano /etc/ssh/sshd_config
+a. Banner de Acceso
 
-Activar:
-
-sudo systemctl enable ssh
-sudo systemctl start ssh
-Banner de Acceso
-
-Editar:
-
-sudo nano /etc/issue.net
-
-Añadir en sshd_config:
+Activamos:
 
 Banner /etc/issue.net
 
+Crear banner:
+
+echo "****************************************************************" | sudo tee /etc/issue /etc/issue.net
+echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
+echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
+echo "****************************************************************" | sudo tee -a /etc/issue /etc/issue.net
+
 Reiniciar:
 
-sudo systemctl restart ssh
-Seguridad en SSH
+sudo systemctl restart sshd
+b. Seguridad en SSH
+
+Configuracion:
+
+LoginGraceTime 30
 PermitRootLogin no
-Port 2222
 MaxAuthTries 3
-PasswordAuthentication no
+MaxSessions 2
+PasswordAuthentication yes
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 0
 
-Reiniciar:
+Comprobacion:
 
-sudo systemctl restart ssh
-Firewalld
+sudo grep -E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd_config
+2. Firewalld
 
 Instalacion:
 
-sudo apt install firewalld
+sudo dnf install firewalld -y
 
-Activar:
+Inicio y habilitacion:
 
-sudo systemctl enable firewalld
 sudo systemctl start firewalld
+sudo systemctl enable firewalld
+3. Configuracion de Reglas
 
-Permitir puertos:
+Permitir SSH:
 
-sudo firewall-cmd --permanent --add-port=2222/tcp
-sudo firewall-cmd --permanent --add-service=http
-sudo firewall-cmd --permanent --add-service=https
+sudo firewall-cmd --permanent --zone=docker --add-service=ssh
 
-Recargar:
+Permitir HTTP y HTTPS:
+
+sudo firewall-cmd --permanent --zone=docker --add-service=http
+sudo firewall-cmd --permanent --zone=docker --add-service=https
+
+Permitir DNS:
+
+sudo firewall-cmd --permanent --zone=docker --add-service=dns
+
+Aplicar cambios:
 
 sudo firewall-cmd --reload
-Lynis
+4. Lynis
 
 Instalacion:
 
-sudo apt install lynis
+sudo dnf install lynis -y
 
 Auditoria:
 
 sudo lynis audit system
+CONCLUSION
+
+Se ha aplicado hardening en tres instancias mediante:
+
+Configuracion avanzada de SSH
+
+Implementacion de firewall (UFW / Firewalld)
+
+Auditoria de seguridad con Lynis
