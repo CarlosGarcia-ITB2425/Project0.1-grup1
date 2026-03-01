@@ -1,60 +1,63 @@
-# **HARDENING PROFESIONAL DEL SISTEMA OPERATIVO**
+# **HARDENING PROFESIONAL DEl SISTEMA OPERATIVO**
 
-![Portada](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/2710818a636ba2c078fdf18520920ec3124fc8cc/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Portada.png)
+![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/2710818a636ba2c078fdf18520920ec3124fc8cc/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Portada.png)
 
-**N°:** GRUPO 1  
-**Integrantes:** Bryan Aguilera Nieto - Izan Fernandez Javier - Giuseppe Suarez  
-**Profesores:** Sergi - David Sicart
+**N°:** GRUPO 1
 
----
+**Integrantes:** Bryan Aguilera Nieto \- Izan Fernandez   
+Javier \- Giuseppe Suarez
 
-## **ÍNDICE**
+**Profesores:** Sergi \- David Sicart
 
-1. [**CONFIGURACIÓN DE INSTANCIA 1**](#configuracion-de-instancia-1)
-    * [1.1. SSH](#ssh-1)
-        * [a. Banner de Acceso](#banner-de-acceso-1)
-        * [b. Seguridad en SSH](#seguridad-en-ssh-1)
-    * [1.2. UFW (Firewall)](#ufw-1)
-        * [a. Modificaciones del firewall](#modificaciones-firewall-1)
-    * [1.3. Lynis (Auditoría)](#lynis-1)
-2. [**CONFIGURACIÓN DE INSTANCIA 2**](#configuracion-de-instancia-2)
-    * [2.1. SSH](#ssh-2)
-        * [a. Banner de Acceso](#banner-de-acceso-2)
-        * [b. Seguridad en SSH](#seguridad-en-ssh-2)
-    * [2.2. Firewalld](#firewalld-2)
-        * [a. Instalación e Inicio](#instalacion-firewalld-2)
-        * [b. Configuración de Reglas](#reglas-firewalld-2)
-    * [2.3. Lynis (Auditoría)](#lynis-2)
-3. [**CONFIGURACIÓN DE INSTANCIA 3**](#configuracion-de-instancia-3)
-    * [3.1. SSH](#ssh-3)
-        * [a. Banner de Acceso](#banner-de-acceso-3)
-        * [b. Seguridad en SSH](#seguridad-en-ssh-3)
-    * [3.2. Firewalld](#firewalld-3)
-        * [a. Instalación e Inicio](#instalacion-firewalld-3)
-        * [b. Configuración de Reglas](#reglas-firewalld-3)
-    * [3.3. Lynis (Auditoría)](#lynis-3)
+# ÍNDICE
 
----
+[CONFIGURACIÓN DE INSTANCIA 1](#configuracion-inst1)
+1. [SSH](#ssh-inst1)
+   1. [Banner de Acceso](#banner-inst1)
+   2. [Seguridad en SSH](#seguridad-ssh-inst1)
+2. [UFW](#ufw-inst1)
+   1. [Modificaciones del Firewall](#modificaciones-firewall-inst1)
+3. [Lynis](#lynis-inst1)
 
-# **CONFIGURACIÓN DE INSTANCIA 1** {#configuracion-de-instancia-1}
+[CONFIGURACIÓN DE INSTANCIA 2](#configuracion-inst2)
+1. [SSH](#ssh-inst2)
+   1. [Banner de Acceso](#banner-inst2)
+   2. [Seguridad en SSH](#seguridad-ssh-inst2)
+2. [Firewalld](#firewalld-inst2)
+   1. [Instalación e Inicio](#instalacion-firewalld-inst2)
+   2. [Configuración de Reglas](#reglas-firewalld-inst2)
+3. [Lynis](#lynis-inst2)
 
-## **SSH** {#ssh-1}
+[CONFIGURACIÓN DE INSTANCIA 3](#configuracion-inst3)
+1. [SSH](#ssh-inst3)
+   1. [Banner de Acceso](#banner-inst3)
+   2. [Seguridad en SSH](#seguridad-ssh-inst3)
+2. [Firewalld](#firewalld-inst3)
+   1. [Instalación e Inicio](#instalacion-firewalld-inst3)
+   2. [Configuración de Reglas](#reglas-firewalld-inst3)
+3. [Lynis](#lynis-inst3)
 
-### **Banner de Acceso** {#banner-de-acceso-1}
+# CONFIGURACIÓN DE INSTANCIA 1 {#configuracion-inst1}
 
-Primero debemos activarlo editando el archivo de configuración y buscando la línea `Banner`:
+## SSH {#ssh-inst1}
 
-`sudo nano /etc/ssh/sshd_config`
 
-![Config SSH](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Config-SSH-INST1.png)
+### Banner de Acceso {#banner-inst1}
 
-Descomentamos la línea y establecemos: `Banner /etc/issue.net`. Para crear el contenido del banner:
+     
+   Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
 
-```bash
-echo "************************************************************************" | sudo tee /etc/issue /etc/issue.net
-echo "ACCESO RESTRINGIDO: Nodo Web Extagram - Solo personal autorizado." | sudo tee -a /etc/issue /etc/issue.net
-echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee -a /etc/issue /etc/issue.net
-echo "************************************************************************" | sudo tee -a /etc/issue /etc/issue.net
+         sudo nano /etc/ssh/sshd\_config
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Config-SSH-INST1.png)
+   
+   Quitamos la \# y pondremos lo siguiente Banner /etc/issue.net  
+     
+   Para crear el contenido del banner, ejecutaremos lo siguiente:  
+     
+         echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee /etc/issue /etc/issue.net
+         echo "ACCESO RESTRINGIDO: Nodo Web Extagram \- Solo personal autorizado." | sudo tee \-a /etc/issue /etc/issue.net
+         echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net
+         echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Banner-INST1.png)
 
@@ -68,7 +71,7 @@ echo "************************************************************************" 
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Mensaje-Banner-INST1.png)
 
-3. ### **Seguridad en SSH** {#seguridad-en-ssh}
+### Seguridad en SSH {#seguridad-ssh-inst1}
 
    Aquí hemos modificado 3 cosas en el archivo
 
