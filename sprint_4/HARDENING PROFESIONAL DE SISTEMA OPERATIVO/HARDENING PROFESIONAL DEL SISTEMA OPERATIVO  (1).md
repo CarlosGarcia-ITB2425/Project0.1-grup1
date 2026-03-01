@@ -66,8 +66,9 @@ Javier \- Giuseppe Suarez
    Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
 
          sudo nano /etc/ssh/sshd\_config
-     
-   Quitamos la \# y pondremos lo siguiente Banner /etc/[issue.net](http://issue.net)  
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Config-SSH-INST1.png)
+   
+   Quitamos la \# y pondremos lo siguiente Banner /etc/issue.net  
      
    Para crear el contenido del banner, ejecutaremos lo siguiente:  
      
@@ -76,12 +77,17 @@ Javier \- Giuseppe Suarez
          echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net
          echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Banner-INST1.png)
+
    Reiniciamos el servicio ssh
 
          sudo systemctl restart sshd
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/ae7cdb3cbafd8902ed370cbc656094b7fa77eafb/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/SSH-RESTART-INST1.png)
+
    Ahora cuando entremos nos aparecerá este mensaje
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Mensaje-Banner-INST1.png)
 
 3. ### **Seguridad en SSH** {#seguridad-en-ssh}
 
@@ -117,8 +123,11 @@ Javier \- Giuseppe Suarez
 
    Si pasan 5 min y se muestra el “aviso” y no tenemos respuesta no lo pregunta por segunda vez, simplemente cierra la conexión
 
+   Comprobación
+   
          sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobaci%C3%B3n-SSH-INST1.png)
 
 5. ### **UFW** {#ufw}
 
