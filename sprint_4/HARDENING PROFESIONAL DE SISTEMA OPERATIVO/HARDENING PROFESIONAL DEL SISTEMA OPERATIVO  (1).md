@@ -1,7 +1,5 @@
 # **HARDENING PROFESIONAL DEl SISTEMA OPERATIVO**
 
-![][image1]
-
 **N°:** GRUPO 1
 
 **Integrantes:** Bryan Aguilera Nieto \- Izan Fernandez   
