@@ -361,10 +361,11 @@ Javier \- Giuseppe Suarez
      
    Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
      
-         sudo nano /etc/ssh/sshd\_config  
+         sudo nano /etc/ssh/sshd\_config
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Config-SSHD-Inst3.png) 
      
    Quitamos la \# y pondremos lo siguiente Banner /etc/[issue.net](http://issue.net)  
-     
      
    Para crear el contenido del banner, ejecutaremos lo siguiente:
 
@@ -372,15 +373,19 @@ Javier \- Giuseppe Suarez
          echo "ACCESO RESTRINGIDO: Nodo Web Extagram \- Solo personal autorizado." | sudo tee \-a /etc/issue /etc/issue.net
          echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net
          echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)
-     
-     
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Crear-Mensaje.Inst3.png)
+    
    Reiniciamos el servicio ssh  
 
          sudo systemctl restart sshd
+   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Restart-SSH-Inst3.png)   
 
    Ahora cuando entremos nos aparecerá este mensaje
-   
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Mensaje-Inicio-Inst3.png)
+   
 3. #### **Seguridad en SSH** {#seguridad-en-ssh-2}
 
      
@@ -424,7 +429,9 @@ Javier \- Giuseppe Suarez
 
    Comprobación
    
-         sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config  
+         sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobar-SSH-Inst3.png)
 
 2. ### **Firewalld** {#firewalld-1}
 
@@ -435,14 +442,20 @@ Javier \- Giuseppe Suarez
    Primero vamos a instalarlo  
      
          sudo dnf install firewalld \-y
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Instalar-Firewall-Inst3.png)
         
    Ahora iniciaremos el servicio  
      
-         sudo systemctl start firewalld  
-     
+         sudo systemctl start firewalld
+   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Iniciar-Firewalld-Inst3.png)
+  
    Para finalizar habilitamos para el arranque automático  
      
-         sudo systemctl enable firewalld 	  
+         sudo systemctl enable firewalld
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Habilitar-Firewalld-Inst3.png)  
 
 3. ### **Configuración de Reglas** {#configuración-de-reglas-1}
 
@@ -453,6 +466,8 @@ Javier \- Giuseppe Suarez
    Vamos a permmitir el servicio de ssh
 
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=ssh
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-SSH-Inst3.png)  
 
    **Servicios Web**
 
@@ -466,11 +481,15 @@ Javier \- Giuseppe Suarez
 
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=https
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-WEB-Inst3.png)  
+
    **Servicio DNS**
 
    Necesario para que nuestro servidor pueda resolver nombres de dominios externos
    
          sudo firewall-cmd \--permanent \--zone=docker \--add-service=dns
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Regla-DNS-Inst3.png)  
 
    **Aplicar Cambios**
 
@@ -478,14 +497,21 @@ Javier \- Giuseppe Suarez
 
          sudo firewall-cmd \--reload
    
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Reload-Firewalld-Inst3.png)  
+   
 5. ### **Lynis** {#lynis-2}
   
    Igual como en las otras procederemos a la implementación de dicha herramienta  
 
          sudo dnf install lynis -y
 
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Instalar-LYNIS-Inst3.png)  
+
    Ahora ejecutamos el lynis para la auditoría del sistema
 
          sudo lynis audit system
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/3r-Scaneo-Inst3.png)  
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/6a6af1061c580d3a81769c154bf46b67488a7b10/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/3r-Fin-Scaneo-Inst3.png)  
 
    Tras el análisis de Lynis, obtenemos un índice de hardening alto, omitimos cierta parte de la configuración por lo mencionado anteriormente 
