@@ -116,6 +116,8 @@ Javier \- Giuseppe Suarez
 
 ### Modificaciones del Firewall
 
+Como en el Sistema Operativo de Ubuntu ya viene por defecto el firewall de UFW no haría falta instalar nada
+
          sudo ufw default deny incoming
    Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
       
