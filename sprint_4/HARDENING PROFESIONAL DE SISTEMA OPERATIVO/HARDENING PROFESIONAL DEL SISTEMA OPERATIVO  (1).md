@@ -120,28 +120,28 @@ Javier \- Giuseppe Suarez
 
 5. ### **UFW** {#ufw}
 
-### Ahora indicaremos las modificaciones del firewall {#ahora-indicaremos-las-modificaciones-del-firewall}
+   ### Ahora indicaremos las modificaciones del firewall {#ahora-indicaremos-las-modificaciones-del-firewall}
 
-      sudo ufw default deny incoming
+         sudo ufw default deny incoming
    Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
       
-      sudo ufw default allow outgoing
+         sudo ufw default allow outgoing
       
    Damos permiso de para que nuestro servidor pueda tener acceso a internet hacia fuera  
       
-      sudo ufw allow 22/tcp
+         sudo ufw allow 22/tcp
       
    Habilitamos el puerto del ssh   
       
-      sudo ufw allow 80/tcp
+         sudo ufw allow 80/tcp
       
    Abrimos puerto 80 para la web con servicio HTTP  
       
-      sudo ufw allow 443/tcp
+         sudo ufw allow 443/tcp
       
    Abrimos puerto 8443 para la web con servicio HTTPS
       
-      sudo ufw enable
+         sudo ufw enable
       
    Iniciamos y habilitamos el firewall UFW  
    
