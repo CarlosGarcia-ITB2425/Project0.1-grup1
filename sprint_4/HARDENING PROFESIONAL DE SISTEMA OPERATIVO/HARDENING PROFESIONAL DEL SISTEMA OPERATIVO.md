@@ -66,7 +66,7 @@ Javier \- Giuseppe Suarez
      
    Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
      
-   **sudo nano /etc/ssh/sshd\_config**  
+      **sudo nano /etc/ssh/sshd\_config**  
    ![][image2]  
      
      
