@@ -20,11 +20,11 @@ Javier \- Giuseppe Suarez
 
 - [Configuracion Instancia 2](#configuracion-instancia-2)
   - [SSH](#ssh-instancia-2)
-    - [Banner de Acceso](#banner-instancia-2)
-    - [Seguridad en SSH](#seguridad-ssh-instancia-2)
+    - [Banner de Acceso](#banner-de-acceso)
+    - [Seguridad en SSH](#seguridad-en-ssh)
   - [Firewalld](#firewalld-instancia-2)
-    - [Instalacion e Inicio](#instalacion-firewalld-instancia-2)
-    - [Configuracion de Reglas](#configuracion-reglas-firewalld-instancia-2)
+    - [Instalacion e Inicio](#instalacion-e-inicio)
+    - [Configuracion de Reglas](#configuracion-de-reglas)
   - [Lynis](#lynis-instancia-2)
 
 - [Configuracion Instancia 3](#configuracion-instancia-3)
@@ -164,13 +164,13 @@ Javier \- Giuseppe Suarez
    Tras la auditoría con Lynis, observamos que tenemos una puntuación de 72/100 esto es un éxito ya que hemos implementado seguridad mientras que a su vez hemos optimizado el servidor.  
    Ciertas recomendaciones o avisos no se han implementado, que en este caso es por relación al Kernel, para evitar posibles incompatibilidades con los servidores y servicios desplegados
 
-# Configuracion Instancia 2 {#configuracion-instancia-2}
+# Configuracion Instancia 2
 
-## SSH {#ssh-instancia-2}
+## SSH
 
    Modificaremos el archivo de configuración de SSH para implementar seguridad en cuanto al acceso al servidor web de Extagram  
 
-### Banner de Acceso {#banner-instancia-2}
+### Banner de Acceso 
 
      
    Como las otras veces, pondremos un banner, para ello activaremos y descomentamos la linea de Banner  
@@ -198,7 +198,7 @@ Javier \- Giuseppe Suarez
    Ahora cuando entremos nos aparecerá este mensaje
 
 
-### Seguridad en SSH {#seguridad-ssh-instancia-2}
+### Seguridad en SSH
 
    Misma configuración que en la instancia 1  
      
@@ -245,11 +245,11 @@ Javier \- Giuseppe Suarez
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobar-SSH-Inst2.png)
 
-## Firewalld {#firewalld-instancia-2}
+## Firewalld
 
    En esta instancia usaremos el cortafuegos llamado Firewalld
 
-### Instalacion e Inicio {#instalacion-firewalld-instancia-2}
+### Instalacion e Inicio
 
    Primero vamos a instalarlo  
      
@@ -270,7 +270,7 @@ Javier \- Giuseppe Suarez
          sudo systemctl enable firewalld
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Habilitar-Firewalld-Inst2.png)
    
-### Configuracion de Reglas {#configuracion-reglas-firewalld-instancia-2}
+### Configuracion de Reglas
 
    Hemos decidido trabajar en las zonas de docker para segmentar el tráfico y que sea más seguro
 
@@ -312,8 +312,7 @@ Javier \- Giuseppe Suarez
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/00e30f1c516fb0adde356c61026b5b60c69dfd67/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Reload-Firewalld-Inst2.png)
    
-## Lynis {#lynis-instancia-2}
-  
+## Lynis  
    Igual como en la instancia 1 procederemos a la implementación de dicha herramienta   
 
          sudo apt yum lynis
