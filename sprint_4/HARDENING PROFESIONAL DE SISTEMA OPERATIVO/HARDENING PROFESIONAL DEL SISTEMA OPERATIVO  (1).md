@@ -59,39 +59,31 @@ Javier \- Giuseppe Suarez
 
 1. ## **SSH** {#ssh}
 
-   
 
 1. ### **Banner de Acceso** {#banner-de-acceso}
 
      
    Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
-     
-   **sudo nano /etc/ssh/sshd\_config**  
-   ![][image2]  
-     
+
+         sudo nano /etc/ssh/sshd\_config
      
    Quitamos la \# y pondremos lo siguiente Banner /etc/[issue.net](http://issue.net)  
      
    Para crear el contenido del banner, ejecutaremos lo siguiente:  
      
-   **echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee /etc/issue /etc/issue.net**  
-   **echo "ACCESO RESTRINGIDO: Nodo Web Extagram \- Solo personal autorizado." | sudo tee \-a /etc/issue /etc/issue.net**  
-   **echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net**  
-   **echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)**
-
-   ![][image3]
-
-   
+         echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee /etc/issue /etc/issue.net
+         echo "ACCESO RESTRINGIDO: Nodo Web Extagram \- Solo personal autorizado." | sudo tee \-a /etc/issue /etc/issue.net
+         echo "Toda actividad esta siendo monitoreada y auditada." | sudo tee \-a /etc/issue /etc/issue.net
+         echo "\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*" | sudo tee \-a /etc/issue /etc/[issue.net](http://issue.net)
 
    Reiniciamos el servicio ssh
 
-   ![][image4]
+         sudo systemctl restart sshd
 
    Ahora cuando entremos nos aparecerá este mensaje
 
-   ![][image5]
 
-2. ### **Seguridad en SSH** {#seguridad-en-ssh}
+3. ### **Seguridad en SSH** {#seguridad-en-ssh}
 
    
 
@@ -99,59 +91,63 @@ Javier \- Giuseppe Suarez
 
    
 
-   **sudo nano /etc/ssh/sshd\_config**
+         sudo nano /etc/ssh/sshd\_config
 
    
 
-   **LoginGraceTime 30** → Solo tienes 30 segundos para poder iniciar sesión.
+         LoginGraceTime 30
+   Solo tienes 30 segundos para poder iniciar sesión.
+
+         PermitRootLogin no
+   Esto lo que hace es que impida que si se conectan por ssh tengan acceso directo como el usuario root
+
+         MaxAuthTries 3
+   En caso de fallar 3 veces la contraseña, el servidor corta conexión automáticamente
+
+         MaxSessions 2
+   En este caso indicamos el número máximo de sesiones que puede haber tanto por shell, el inicio de sesión o sistemas como sftp etc
+
+         PasswordAuthentication yes
+   Solo puedes entrar con ssh si tienes la clave privada, en caso contrario no podras acceder
+
+         AllowTcpForwarding no
+   Con esto lo que hacemos es bloquear las conexiones para que puedan acceder entre servidor a otro, es decir estamos quitando un “puente” que hay entre servidores 
+
+         ClientAliveInterval 300
+   Enviamos como un “aviso” cada 5 min (equivale a 300 seg) para saber si el usuario sigue conectado pero no escribe o si ha perdido conexión
+
+         ClientAliveCountMax 0
+   Acorde a la anterior, es la cantidad de “aviso” que se le da al cliente.
+
+Si pasan 5 min y se muestra el “aviso” y no tenemos respuesta no lo pregunta por segunda vez, simplemente cierra la conexión
 
    
 
-   **PermitRootLogin no** → Esto lo que hace es que impida que si se conectan por ssh tengan acceso directo como el usuario root
+         sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config
 
-   
 
-   **MaxAuthTries 3** → En caso de fallar 3 veces la contraseña, el servidor corta conexión automáticamente
 
-   
-
-   **MaxSessions 2** → En este caso indicamos el número máximo de sesiones que puede haber tanto por shell, el inicio de sesión o sistemas como sftp etc
-
-   
-
-   **PasswordAuthentication yes** → Solo puedes entrar con ssh si tienes la clave privada, en caso contrario no podras acceder
-
-   
-
-   **AllowTcpForwarding no** → Con esto lo que hacemos es bloquear las conexiones para que puedan acceder entre servidor a otro, es decir estamos quitando un “puente” que hay entre servidores 
-
-   
-
-   **ClientAliveInterval 300** → Enviamos como un “aviso” cada 5 min (equivale a 300 seg) para saber si el usuario sigue conectado pero no escribe o si ha perdido conexión
-
-   
-
-   **ClientAliveCountMax 0** → Acorde a la anterior, es la cantidad de “aviso” que se le da al cliente.
-
-   Si pasan 5 min y se muestra el “aviso” y no tenemos respuesta no lo pregunta por segunda vez, simplemente cierra la conexión
-
-   
-
-   **sudo grep \-E "PermitRootLogin|MaxAuthTries|LoginGraceTime|ClientAlive|AllowTcpForwarding|MaxSessions|PasswordAuthentication" /etc/ssh/sshd\_config**
-
-   ![][image6]
-
-3. ### **UFW** {#ufw}
+5. ### **UFW** {#ufw}
 
 ### Ahora indicaremos las modificaciones del firewall {#ahora-indicaremos-las-modificaciones-del-firewall}
 
-**sudo ufw default deny incoming →** Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
-**sudo ufw default allow outgoing →** Damos permiso de para que nuestro servidor pueda tener acceso a internet hacia fuera  
-**sudo ufw allow 22/tcp** → Habilitamos el puerto del ssh   
-**sudo ufw allow 80/tcp** → Abrimos puerto 80 para la web con servicio HTTP  
-**sudo ufw allow 443/tcp** → Abrimos puerto 8443 para la web con servicio HTTPS  
-**sudo ufw enable** → Iniciamos y habilitamos el firewall UFW  
-![][image7]
+      sudo ufw default deny incoming
+Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
+      
+      sudo ufw default allow outgoing
+Damos permiso de para que nuestro servidor pueda tener acceso a internet hacia fuera  
+      
+      sudo ufw allow 22/tcp
+Habilitamos el puerto del ssh   
+      
+      sudo ufw allow 80/tcp
+Abrimos puerto 80 para la web con servicio HTTP  
+      
+      sudo ufw allow 443/tcp
+Abrimos puerto 8443 para la web con servicio HTTPS
+      
+      sudo ufw enable
+Iniciamos y habilitamos el firewall UFW  
 
 El mensaje de Command may disrupt existing ssh connections. Proceed? nos indica que habilitando el firewall podríamos perder la conexión mediante ssh, desea continuar?\!  
 En nuestro caso, decimos que Yes porque ya pusimos que permitimos el servicio de ssh
