@@ -11,38 +11,40 @@ Javier \- Giuseppe Suarez
 
 # ÍNDICE
 
-- [Configuracion Instancia 1](#configuracion-instancia-1)
-  - [SSH](#ssh-instancia-1)
-    - [Banner de Acceso](#banner-instancia-1)
-    - [Seguridad en SSH](#seguridad-ssh-instancia-1)
-  - [UFW](#ufw-instancia-1)
-  - [Lynis](#lynis-instancia-1)
-
-- [Configuracion Instancia 2](#configuracion-instancia-2)
-  - [SSH](#ssh-instancia-2)
+- [Configuración Instancia 1](#configuración-instancia-1)
+  - [SSH](#ssh)
     - [Banner de Acceso](#banner-de-acceso)
     - [Seguridad en SSH](#seguridad-en-ssh)
-  - [Firewalld](#firewalld-instancia-2)
-    - [Instalacion e Inicio](#instalacion-e-inicio)
-    - [Configuracion de Reglas](#configuracion-de-reglas)
-  - [Lynis](#lynis-instancia-2)
+  - [UFW](#ufw)
+    - [Modificaciones del Firewall](#modificaciones-del-firewall)
+  - [Lynis](#lynis)
 
-- [Configuracion Instancia 3](#configuracion-instancia-3)
-  - [SSH](#ssh-instancia-3)
-    - [Banner de Acceso](#banner-instancia-3)
-    - [Seguridad en SSH](#seguridad-ssh-instancia-3)
-  - [Firewalld](#firewalld-instancia-3)
-    - [Instalacion e Inicio](#instalacion-firewalld-instancia-3)
-    - [Configuracion de Reglas](#configuracion-reglas-firewalld-instancia-3)
-  - [Lynis](#lynis-instancia-3)
+- [Configuración Instancia 2](#configuración-instancia-2)
+  - [SSH](#ssh-1)
+    - [Banner de Acceso](#banner-de-acceso-1)
+    - [Seguridad en SSH](#seguridad-en-ssh-1)
+  - [Firewalld](#firewalld)
+    - [Instalación e Inicio](#instalación-e-inicio)
+    - [Configuración de Reglas](#configuración-de-reglas)
+  - [Lynis](#lynis-1)
 
-  #
+- [Configuración Instancia 3](#configuración-instancia-3)
+  - [SSH](#ssh-2)
+    - [Banner de Acceso](#banner-de-acceso-2)
+    - [Seguridad en SSH](#seguridad-en-ssh-2)
+  - [Firewalld](#firewalld-1)
+    - [Instalación e Inicio](#instalación-e-inicio-1)
+    - [Configuración de Reglas](#configuración-de-reglas-1)
+  - [Lynis](#lynis-2)
 
-# Configuracion Instancia 1 {#configuracion-instancia-1}
+---
+#
 
-## SSH {#ssh-instancia-1}
+# Configuración Instancia 1
 
-### Banner de Acceso {#banner-instancia-1}
+## SSH
+
+### Banner de Acceso
 
      
    Primero, debemos de activarlo, para ello editaremos el archivo de configuración y buscamos la línea Banner  
@@ -71,7 +73,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Mensaje-Banner-INST1.png)
 
-### Seguridad en SSH {#seguridad-ssh-instancia-1}
+### Seguridad en SSH
    Aquí hemos modificado 3 cosas en el archivo
 
          sudo nano /etc/ssh/sshd\_config
@@ -110,7 +112,9 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/1468bc038b0d11868c73e7416379ad4441b9d289/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/img/Comprobaci%C3%B3n-SSH-INST1.png)
 
-## UFW {#ufw-instancia-1}
+## UFW
+
+### Modificaciones del Firewall
 
          sudo ufw default deny incoming
    Bloqueamos todo por defecto menos a lo que yo le permiso explícitamente  
@@ -143,7 +147,7 @@ Javier \- Giuseppe Suarez
    
    Finalmente, aparece que el firewall ya esta activado e iniciado en el sistema
 
-## Lynis {#lynis-instancia-1}
+## Lynis
 
      
    Con esta herramienta, podremos hacer una auditoría de nuestro servidor  
