@@ -431,9 +431,9 @@ Javier \- Giuseppe Suarez
          clients:  
            - url: http://172.31.31.80:3100/loki/api/v1/push  
      
-         scrape\_configs:  
-           - job\_name: system_s7  
-          static\_configs:  
+         scrape_configs:  
+           - job_name: system_s7  
+          static_configs:  
           - targets:  
            - localhost  
             labels:  
