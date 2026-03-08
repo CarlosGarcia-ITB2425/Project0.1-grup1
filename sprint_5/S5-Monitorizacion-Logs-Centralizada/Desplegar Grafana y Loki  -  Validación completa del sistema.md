@@ -94,12 +94,12 @@ Javier \- Giuseppe Suarez
      
    Crearemos una carpeta para realizar este sprint, lo llamaremos monitoratge  
      
-         mkdir \~/monitoratge  
+         mkdir ~/monitoratge  
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/crear-directorio-inst2.png)  
      
    Ahora accedemos a esta carpeta creada  
      
-         cd \~/monitoratge  
+         cd ~/monitoratge  
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/acceder-directorio-inst2.png)
 
@@ -115,28 +115,28 @@ Javier \- Giuseppe Suarez
    Dentro del anterior directorio que hemos creado, crearemos un archivo yaml. que contendrá lo siguiente  
      
          sudo nano loki-config.yaml
-
-         auth\_enabled: false
+   #
+         auth_enabled: false
          server:
-            http\_listen\_port: 3100
+            http_listen_port: 3100
          common:
-            path\_prefix: /tmp/loki
+            path_prefix: /tmp/loki
            storage:
              filesystem:
-               chunks\_directory: /tmp/loki/chunks
-               rules\_directory: /tmp/loki/rules
-           replication\_factor: 1
+               chunks_directory: /tmp/loki/chunks
+               rules_directory: /tmp/loki/rules
+           replication_factor: 1
            ring:
              kvstore:
                store: inmemory
-         schema\_config:
+         schema_config:
            configs:
-             \- from: 2020-10-24
+             - from: 2020-10-24
                   store: boltdb-shipper
-                  object\_store: filesystem
+                  object_store: filesystem
                   schema: v11
                   index:
-                    prefix: index\_
+                    prefix: index_   
                     period: 24h
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/loki-config.png)
@@ -155,37 +155,34 @@ Javier \- Giuseppe Suarez
    Ahora creamos el archivo .yml  
      
          nano docker-compose.yml
-   
+   #
          version: '3.8'  
      
          services:  
-           \# \--- MONITORIZACIÓN \---  
            grafana:  
              image: grafana/grafana:latest  
-             container\_name: grafana  
+             container_name: grafana  
              ports:  
-               \- "3000:3000"  
+               - "3000:3000"  
              restart: unless-stopped  
              networks:  
-               \- extagram-net
+               - extagram-net
    
         loki:  
           image: grafana/loki:latest  
-          container\_name: loki  
-          \# No mapeamos puertos al host para que no sea accesible desde internet (Seguridad)  
-          command: \-config.file=/etc/loki/local-config.yaml  
+          container_name: loki  
+          command: -config.file=/etc/loki/local-config.yaml  
           restart: unless-stopped  
           networks:  
-            \- extagram-net  
+            - extagram-net  
 
-         \# \--- SERVICIOS S6 (ESTÁTICOS) \---  
            s6-static:  
              image: nginx:alpine  
-             container\_name: s6-static  
+             container_name: s6-static  
              volumes:  
-               \- ./static-content:/usr/share/nginx/html:ro  
+               - ./static-content:/usr/share/nginx/html:ro  
              networks:  
-               \- extagram-net  
+               - extagram-net  
          networks:  
            extagram-net:  
              driver: bridge  
@@ -197,7 +194,7 @@ Javier \- Giuseppe Suarez
      
    Ahora lanzaremos el docker   
      
-         sudo docker compose up \-d
+         sudo docker compose up -d
 
    Ahora con este comando vemos los que están activos
    
@@ -213,25 +210,25 @@ Javier \- Giuseppe Suarez
      
    Abriremos el puerto del Grafana que es el 3000  
      
-         sudo firewall-cmd \--permanent \--add-port=3000/tcp  
+         sudo firewall-cmd --permanent --add-port=3000/tcp  
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-inst2.png)  
      
    Abriremos el sitio estático que en este caso es el 8080  
      
-         sudo firewall-cmd \--permanent \--add-port=8080/tcp
+         sudo firewall-cmd --permanent --add-port=8080/tcp
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall2-inst2.png)  
 
    Recargamos las reglas   
      
-         sudo firewall-cmd \--reload  
+         sudo firewall-cmd --reload  
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/recargar-firewall.png)  
      
    Verificamos reglas  
      
-         sudo firewall-cmd \--list-all  
+         sudo firewall-cmd --list-all  
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/verificar-firewall.png)  
 
@@ -318,11 +315,11 @@ Javier \- Giuseppe Suarez
      
    Creamos una carpeta llamada promtail  
      
-         mkdir \-p \~/promtail  
+         mkdir -p ~/promtail  
      
    Accedemos a la carpeta  
      
-         cd \~/promtail  
+         cd ~/promtail  
      
    ![][image26]  
          
@@ -334,22 +331,22 @@ Javier \- Giuseppe Suarez
    Y el archivo tiene esto  
      
          server:  
-           http\_listen\_port: 9080  
-           grpc\_listen\_port: 0  
+           http_listen_port: 9080  
+           grpc_listen_port: 0  
          positions:  
            filename: /tmp/positions.yaml  
    clients:  
-     \- url: http://172.31.31.80:3100/loki/api/v1/push  
+     - url: http://172.31.31.80:3100/loki/api/v1/push  
      
-   scrape\_configs:  
-     \- job\_name: system  
-       static\_configs:  
-       \- targets:  
-           \- localhost  
+   scrape_configs:  
+     - job_name: system  
+       static_configs:  
+       - targets:  
+           - localhost  
          labels:  
            job: varlogs  
-           instance: instancia-1  \# \<--- Esto es lo que verás en Grafana  
-           \_\_path\_\_: /var/log/\*.log  
+           instance: instancia-1   
+         __path__: /var/log/*.log  
      
    ![][image27]  
    
