@@ -54,13 +54,10 @@ Javier \- Giuseppe Suarez
 
 ## **CONFIGURACIÓN DE INSTANCIA 2 – Grafana y Loki**
 
-1. ### **MONITOREAR**
-
+### MONITOREAR
    
 
-1. #### **Creación de directorios**
-
-     
+#### Creación de directorios     
    Crearemos una carpeta para realizar este sprint, lo llamaremos monitoratge  
      
          mkdir ~/monitoratge  
@@ -78,7 +75,7 @@ Javier \- Giuseppe Suarez
          mkdir loki-config   
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/crear-directorio2-inst2.png)
 
-2. #### **Creación de archivos de configuración**
+#### Creación de archivos de configuración
 
      
    Dentro del anterior directorio que hemos creado, crearemos un archivo yaml. que contendrá lo siguiente  
