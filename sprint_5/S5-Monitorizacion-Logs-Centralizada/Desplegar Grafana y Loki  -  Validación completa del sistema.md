@@ -331,9 +331,8 @@ Javier \- Giuseppe Suarez
      
          cd ~/promtail  
      
-   ![][image26]  
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/crear-directorio-inst1.png)   
          
-     
    Creamos un archivo  
      
          nano promtail-config.yaml  
@@ -343,77 +342,61 @@ Javier \- Giuseppe Suarez
          server:  
            http_listen_port: 9080  
            grpc_listen_port: 0  
-         positions:  
-           filename: /tmp/positions.yaml  
-   clients:  
-     - url: http://172.31.31.80:3100/loki/api/v1/push  
-     
-   scrape_configs:  
-     - job_name: system  
-       static_configs:  
-       - targets:  
-           - localhost  
-         labels:  
-           job: varlogs  
-           instance: instancia-1   
-         __path__: /var/log/*.log  
-     
-   ![][image27]  
-   
 
-2. ####  **Envío de datos** {#envío-de-datos}
+         positions:  
+              filename: /tmp/positions.yaml  
+
+         clients:  
+           - url: http://172.31.31.80:3100/loki/api/v1/push  
+     
+         scrape_configs:  
+           - job_name: system  
+          static_configs:  
+             - targets:  
+              - localhost  
+         labels:  
+            job: varlogs  
+            instance: instancia-1   
+            __path__: /var/log/*.log  
+     
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/config-grafana-inst1.png)   
+
+3. ####  **Envío de datos** {#envío-de-datos}
 
    Ejecuta este comando para que empiece a enviar datos
 
+         sudo docker run -d
    
+           --name promtail \
 
-   sudo docker run \-d \\
+           -v $(pwd):/etc/promtail \
 
-     \--name promtail \\
+           -v /var/log:/var/log \
 
-     \-v $(pwd):/etc/promtail \\
+           grafana/promtail:latest \
 
-     \-v /var/log:/var/log \\
+        -config.file=/etc/promtail/promtail-config.yaml
 
-     grafana/promtail:latest \\
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/correr-docker-inst1.png)   
 
-     \-config.file=/etc/promtail/promtail-config.yaml
-
-   
-
-   
-
-   ![][image28]
-
-   
-
-3. #### **Regla AWS** {#regla-aws}
+4. #### **Regla AWS** {#regla-aws}
 
      
    Ahora debemos de añadir la siguiente regla en AWS para que funcione  
      
    Puerto 3100 y la IP privada de la instancia 1, en nuestro caso pusimos la siguiente descripción  
      
-   ![][image29]
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-AWS-inst1.png)   
 
-4. ####  **Comprobar** {#comprobar}
+5. ####  **Comprobar** {#comprobar}
 
    Como en la configuración de la instancia pusimos que se cree una etiqueta llamado instancia nos aparece aqui, ademas de poder ver que la que se ha enviado es la Instancia 1  
-   ![][image30]
+
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/label-inst1.png)   
 
    Nos sale los logs 
 
-   ![][image31]
-
-   
-
-   
-
-   
-
-   
-
-   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/show-logs.png)   
 
    ## **CONFIGURACIÓN DE INSTANCIA 3 (S7)** {#configuración-de-instancia-3-(s7)}
 
