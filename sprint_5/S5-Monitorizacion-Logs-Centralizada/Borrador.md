@@ -1,4 +1,4 @@
-# Desplegar Grafana y Loki - Validación completa del sistema
+# **Desplegar Grafana y Loki  \-  Validación completa del sistema**
 
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/7cc34c0d6f79cc5b801297d1be9df3821c75a5ee/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/PORTADA.png)
 
@@ -9,51 +9,56 @@ Javier \- Giuseppe Suarez
 
 **Profesores:** Sergi \- David Sicart
 
-## ÍNDICE
+## 
+
+## 
+
+# ÍNDICE
 
 - [S5-01 - Desplegar Grafana y Loki](#s5-01---desplegar-grafana-y-loki)
+  - [Configuración Instancia 2 - Grafana y Loki](#configuración-instancia-2---grafana-y-loki)
+    - [Monitorizar](#monitorizar)
+      - [Creación de directorios](#creación-de-directorios)
+      - [Creación de archivos de configuración](#creación-de-archivos-de-configuración)
+      - [Crear nuevo docker](#crear-nuevo-docker)
+      - [Lanzar docker y comprobamos](#lanzar-docker-y-comprobamos)
+    - [Firewall](#firewall)
+      - [Crearemos nuevas reglas de Firewall](#crearemos-nuevas-reglas-de-firewall)
+    - [Regla de AWS](#regla-de-aws)
+    - [Pruebas](#pruebas)
+      - [Grafana](#grafana)
+      - [Conectar con Loki](#conectar-con-loki)
 
-- [CONFIGURACIÓN DE INSTANCIA 2 – Grafana y Loki](#configuracion-de-instancia-2--grafana-y-loki)
-  - [MONITOREAR](#monitorear)
-    - [Creación de directorios](#creacion-de-directorios)
-    - [Creación de archivos de configuración](#creacion-de-archivos-de-configuracion)
-    - [Crear nuevo docker](#crear-nuevo-docker)
-    - [Lanzar docker y comprobamos](#lanzar-docker-y-comprobamos)
-  - [FIREWALL](#firewall)
-    - [Crearemos nuevas reglas de Firewall](#crearemos-nuevas-reglas-de-firewall)
-  - [REGLA DE AWS](#regla-de-aws)
-    - [Crearemos la regla en AWS](#crearemos-la-regla-en-aws)
-  - [PRUEBAS](#pruebas)
-    - [Grafana](#grafana)
-    - [Conectar con Loki](#conectar-con-loki)
+- [S5-07 - Validación completa del sistema](#s5-07---validación-completa-del-sistema)
+  - [Configuración de instancia 1](#configuración-de-instancia-1)
+    - [Promtail – Instancia 1](#promtail--instancia-1)
+      - [Envío de datos](#envío-de-datos)
+      - [Regla AWS](#regla-aws)
+      - [Comprobar](#comprobar)
 
-- [S5-07 - Validación completa del sistema](#s5-07---validacion-completa-del-sistema)
+  - [Configuración de instancia 3 (S7)](#configuración-de-instancia-3-s7)
+    - [Promtail – Instancia 3](#promtail--instancia-3)
+      - [Envío de datos](#envío-de-datos-1)
+      - [Regla AWS](#regla-aws-1)
+      - [Comprobar](#comprobar-1)
 
-- [CONFIGURACIÓN DE INSTANCIA 1](#configuracion-de-instancia-1)
-  - [Promtail – Instancia 1](#promtail--instancia-1)
-    - [Envío de datos](#envio-de-datos)
-    - [Regla AWS](#regla-aws)
-    - [Comprobar](#comprobar)
+  - [Configuración de instancia 2 – Promtail](#configuración-de-instancia-2--promtail)
+    - [Promtail – Instancia 2](#promtail--instancia-2)
+      - [Envío de datos](#envío-de-datos-2)
+      - [Comprobar](#comprobar-2)
 
-- [CONFIGURACIÓN DE INSTANCIA 3 (S7)](#configuracion-de-instancia-3-s7)
-  - [Promtail – Instancia 3](#promtail--instancia-3)
-    - [Envío de datos](#envio-de-datos-1)
-    - [Regla AWS](#regla-aws-1)
-    - [Comprobar](#comprobar-1)
+#
 
-- [CONFIGURACIÓN DE INSTANCIA 2 – Promtail](#configuracion-de-instancia-2--promtail)
-  - [Promtail – Instancia 2](#promtail--instancia-2)
-    - [Envío de datos](#envio-de-datos-2)
-    - [Comprobar](#comprobar-2)# 
+# S5-01 - Desplegar Grafana y Loki
 
-# **S5-01 - Desplegar Grafana y Loki**
+## **Configuración Instancia 2 - Grafana y Loki**
 
-## **CONFIGURACIÓN DE INSTANCIA 2 – Grafana y Loki**
+### Monitorizar
 
-### MONITOREAR
    
 
-#### Creación de directorios     
+#### Creación de directorios
+     
    Crearemos una carpeta para realizar este sprint, lo llamaremos monitoratge  
      
          mkdir ~/monitoratge  
@@ -71,7 +76,7 @@ Javier \- Giuseppe Suarez
          mkdir loki-config   
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/crear-directorio2-inst2.png)
 
-#### Creación de archivos de configuración
+2. #### **Creación de archivos de configuración**
 
      
    Dentro del anterior directorio que hemos creado, crearemos un archivo yaml. que contendrá lo siguiente  
