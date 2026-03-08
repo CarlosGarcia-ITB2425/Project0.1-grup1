@@ -16,7 +16,8 @@ Javier \- Giuseppe Suarez
 ## ÍNDICE
 
 - [S5-01 - Desplegar Grafana y Loki](#s5-01---desplegar-grafana-y-loki)
-- [CONFIGURACIÓN DE INSTANCIA 2](#configuracion-de-instancia-2)
+
+- [CONFIGURACIÓN DE INSTANCIA 2 – Grafana y Loki](#configuracion-de-instancia-2--grafana-y-loki)
   - [MONITOREAR](#monitorear)
     - [Creación de directorios](#creacion-de-directorios)
     - [Creación de archivos de configuración](#creacion-de-archivos-de-configuracion)
@@ -31,30 +32,27 @@ Javier \- Giuseppe Suarez
     - [Conectar con Loki](#conectar-con-loki)
 
 - [S5-07 - Validación completa del sistema](#s5-07---validacion-completa-del-sistema)
+
 - [CONFIGURACIÓN DE INSTANCIA 1](#configuracion-de-instancia-1)
-  - [Promtail](#promtail)
-    - [Configuración de Promtail](#configuracion-de-promtail)
+  - [Promtail – Instancia 1](#promtail--instancia-1)
     - [Envío de datos](#envio-de-datos)
     - [Regla AWS](#regla-aws)
     - [Comprobar](#comprobar)
 
 - [CONFIGURACIÓN DE INSTANCIA 3 (S7)](#configuracion-de-instancia-3-s7)
-  - [Promtail](#promtail-1)
-    - [Configuración de Promtail](#configuracion-de-promtail-1)
+  - [Promtail – Instancia 3](#promtail--instancia-3)
     - [Envío de datos](#envio-de-datos-1)
     - [Regla AWS](#regla-aws-1)
     - [Comprobar](#comprobar-1)
 
-- [CONFIGURACIÓN DE INSTANCIA 2](#configuracion-de-instancia-2-1)
-  - [Promtail](#promtail-2)
-    - [Configuración de Promtail](#configuracion-de-promtail-2)
+- [CONFIGURACIÓN DE INSTANCIA 2 – Promtail](#configuracion-de-instancia-2--promtail)
+  - [Promtail – Instancia 2](#promtail--instancia-2)
     - [Envío de datos](#envio-de-datos-2)
-    - [Comprobar](#comprobar-2)
-# 
+    - [Comprobar](#comprobar-2)# 
 
 # **S5-01 - Desplegar Grafana y Loki**
 
-## **CONFIGURACIÓN DE INSTANCIA 2**
+## **CONFIGURACIÓN DE INSTANCIA 2 – Grafana y Loki**
 
 1. ### **MONITOREAR**
 
@@ -289,9 +287,8 @@ Javier \- Giuseppe Suarez
 
 ## **CONFIGURACIÓN DE INSTANCIA 1**
 
-1. ### **Promtail**
+1. ### **Promtail – Instancia 1**
 
-1. #### **Configuración de Promtail**
 
      
    Creamos una carpeta llamada promtail  
@@ -371,9 +368,8 @@ Javier \- Giuseppe Suarez
 
    ## **CONFIGURACIÓN DE INSTANCIA 3 (S7)**
 
-1. ### **Promtail**
+1. ### **Promtail – Instancia 3**
 
-1. #### **Configuración de Promtail**
 
      
    Creamos una carpeta llamada promtail  
@@ -450,11 +446,10 @@ Javier \- Giuseppe Suarez
    Nos sale los logs   
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/show-logs-inst3.png)      
 
-   ## **CONFIGURACIÓN DE INSTANCIA 2**
+   ## **CONFIGURACIÓN DE INSTANCIA 2 – Promtail**
 
-1. ### **Promtail**
+1. ### **Promtail – Instancia 2**
 
-1. #### **Configuración de Promtail**
      
    Creamos una carpeta llamada promtail  
      
