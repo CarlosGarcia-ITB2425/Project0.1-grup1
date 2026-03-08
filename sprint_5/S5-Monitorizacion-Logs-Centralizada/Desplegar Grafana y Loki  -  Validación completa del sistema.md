@@ -282,7 +282,17 @@ Javier \- Giuseppe Suarez
    
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/save%20%26%20test.png)
      
-   Ahora provocamos un Log manualmente  
+   Ahora provocamos un Log manualmente
+
+         curl -H "Content-Type: application/json" -XPOST "http://localhost:3100/loki/api/v1/push" \
+         --data '{
+        "streams": [
+       {
+         "stream": { "job": "test-manual", "level": "info" },
+         "values": [ [ "'$(date +%s%N)'", "Hola Profe, esto es un log de prueba" ] ]
+       }
+        ]
+         }'
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/provocar-log.png)
      
