@@ -448,7 +448,7 @@ Javier \- Giuseppe Suarez
    Ejecuta este comando para que empiece a enviar datos
 
 
-         sudo docker run \-d \
+         sudo docker run -d \
 
            --name promtail \
 
@@ -512,7 +512,7 @@ Javier \- Giuseppe Suarez
          clients:  
            - url: http://172.31.31.80:3100/loki/api/v1/push  
      
-         scrape\_configs:  
+         scrape_configs:  
            - job_name: system_s2  
              static_configs:  
                - targets:  
@@ -528,7 +528,7 @@ Javier \- Giuseppe Suarez
 
    Ejecuta este comando para que empiece a enviar datos
 
-         sudo docker run \-d \
+         sudo docker run -d \
 
            --name promtail-s2 \
 
