@@ -407,67 +407,60 @@ Javier \- Giuseppe Suarez
      
    Creamos una carpeta llamada promtail  
      
-   mkdir \-p \~/promtail  
+         mkdir -p ~/promtail  
      
    Accedemos a la carpeta  
      
-   cd \~/promtail  
+         cd ~/promtail  
      
-   ![][image32]  
-     
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/directorio-inst3.png)   
      
    Creamos un archivo  
      
-   nano promtail-config.yaml  
+         nano promtail-config.yaml  
      
    Y el archivo tiene esto  
      
-   server:  
-     http\_listen\_port: 9080  
-     grpc\_listen\_port: 0  
+         server:  
+           http_listen_port: 9080  
+           grpc_listen_port: 0  
      
-   positions:  
-     filename: /tmp/positions.yaml  
+         positions:  
+           filename: /tmp/positions.yaml  
      
-   clients:  
-     \- url: http://172.31.31.80:3100/loki/api/v1/push  
+         clients:  
+           - url: http://172.31.31.80:3100/loki/api/v1/push  
      
-   scrape\_configs:  
-     \- job\_name: system\_s7  
-       static\_configs:  
-       \- targets:  
-           \- localhost  
-         labels:  
-           job: varlogs\_s7  
-           instance: instancia-s7    
-           \_\_path\_\_: /var/log/\*.log  
+         scrape\_configs:  
+           - job\_name: system_s7  
+          static\_configs:  
+          - targets:  
+           - localhost  
+            labels:  
+              job: varlogs_s7  
+              instance: instancia-s7    
+              __path__: /var/log/*.log  
      
-   ![][image33]  
-   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/config-yaml-inst3.png)   
 
 2. #### **Envío de datos** {#envío-de-datos-1}
 
    Ejecuta este comando para que empiece a enviar datos
 
-   
 
-   sudo docker run \-d \\
+         sudo docker run \-d \
 
-     \--name promtail \\
+           --name promtail \
 
-     \-v $(pwd):/etc/promtail \\
+           -v $(pwd):/etc/promtail \
 
-     \-v /var/log:/var/log \\
+           -v /var/log:/var/log \
 
-     grafana/promtail:latest \\
+           grafana/promtail:latest \
 
-     \-config.file=/etc/promtail/promtail-config.yaml
+           -config.file=/etc/promtail/promtail-config.yaml
 
-   
-
-   
-
-   ![][image34]
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/correr-docker-inst3.png)   
 
 3. #### **Regla AWS** {#regla-aws-1}
 
@@ -476,26 +469,15 @@ Javier \- Giuseppe Suarez
      
    Puerto 3100 y la IP privada de la instancia 3, en nuestro caso pusimos la siguiente descripción  
      
-   ![][image35]
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-AWS-inst3.png)   
 
 4. #### **Comprobar** {#comprobar-1}
 
    Como en la configuración de la instancia pusimos que se cree una etiqueta llamado instancia nos aparece aqui, ademas de poder ver que la que se ha enviado es la Instancia 3  
-   ![][image36]  
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/label-inst3.png)   
      
    Nos sale los logs   
-   ![][image37]  
-   
-
-   
-
-   
-
-   
-
-   
-
-   
+   ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/show-logs-inst3.png)      
 
    ## **CONFIGURACIÓN DE INSTANCIA 2** {#configuración-de-instancia-2-1}
 
