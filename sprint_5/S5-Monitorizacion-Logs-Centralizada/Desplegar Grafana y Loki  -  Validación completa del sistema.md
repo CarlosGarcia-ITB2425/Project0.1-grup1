@@ -13,84 +13,51 @@ Javier \- Giuseppe Suarez
 
 ## 
 
-## **ÍNDICE**
+# ÍNDICE
 
-**[S5-01 \- Desplegar Grafana y Loki	3](#s5-01---desplegar-grafana-y-loki)**
+- [S5-01 - Desplegar Grafana y Loki](#s5-01---desplegar-grafana-y-loki)
+  - [Configuración Instancia 2 - Grafana y Loki](#configuración-instancia-2---grafana-y-loki)
+    - [Monitorizar](#monitorizar)
+      - [Creación de directorios](#creación-de-directorios)
+      - [Creación de archivos de configuración](#creación-de-archivos-de-configuración)
+      - [Crear nuevo docker](#crear-nuevo-docker)
+      - [Lanzar docker y comprobamos](#lanzar-docker-y-comprobamos)
+    - [Firewall](#firewall)
+      - [Crearemos nuevas reglas de Firewall](#crearemos-nuevas-reglas-de-firewall)
+    - [Regla de AWS](#regla-de-aws)
+    - [Pruebas](#pruebas)
+      - [Grafana](#grafana)
+      - [Conectar con Loki](#conectar-con-loki)
 
-[**CONFIGURACIÓN DE INSTANCIA 2	3**](#configuración-de-instancia-2)
+- [S5-07 - Validación completa del sistema](#s5-07---validación-completa-del-sistema)
+  - [Configuración de instancia 1](#configuración-de-instancia-1)
+    - [Promtail – Instancia 1](#promtail--instancia-1)
+      - [Envío de datos](#envío-de-datos)
+      - [Regla AWS](#regla-aws)
+      - [Comprobar](#comprobar)
 
-[**1\. MONITOREAR	3**](#monitorear)
+  - [Configuración de instancia 3 (S7)](#configuración-de-instancia-3-s7)
+    - [Promtail – Instancia 3](#promtail--instancia-3)
+      - [Envío de datos](#envío-de-datos-1)
+      - [Regla AWS](#regla-aws-1)
+      - [Comprobar](#comprobar-1)
 
-[a. Creación de directorios	3](#creación-de-directorios)
+  - [Configuración de instancia 2 – Promtail](#configuración-de-instancia-2--promtail)
+    - [Promtail – Instancia 2](#promtail--instancia-2)
+      - [Envío de datos](#envío-de-datos-2)
+      - [Comprobar](#comprobar-2)
 
-[b. Creación de archivos de configuración	4](#creación-de-archivos-de-configuración)
+#
 
-[c. Crear nuevo docker	5](#crear-nuevo-docker)
+# S5-01 - Desplegar Grafana y Loki
 
-[d. Lanzar docker y comprobamos	7](#lanzar-docker-y-comprobamos)
+## **Configuración Instancia 2 - Grafana y Loki**
 
-[**2\. FIREWALL	7**](#firewall)
-
-[a. Crearemos nuevas reglas de Firewall	7](#crearemos-nuevas-reglas-de-firewall)
-
-[**3\. REGLA DE AWS	8**](#regla-de-aws)
-
-[a. Crearemos la regla en AWS	8](#crearemos-la-regla-en-aws)
-
-[**4\. PRUEBAS	9**](#pruebas)
-
-[a. Grafana	9](#grafana)
-
-[b. Conectar con Loki	10](#conectar-con-loki)
-
-[**S5-07 \- Validación completa del sistema	16**](#s5-07---validación-completa-del-sistema)
-
-[**CONFIGURACIÓN DE INSTANCIA 1	16**](#configuración-de-instancia-1)
-
-[**1\. Promtail	16**](#promtail)
-
-[a. Configuración de Promtail	16](#configuración-de-promtail)
-
-[b. Envío de datos	17](#envío-de-datos)
-
-[c. Regla AWS	18](#regla-aws)
-
-[d. Comprobar	18](#comprobar)
-
-[**CONFIGURACIÓN DE INSTANCIA 3 (S7)	20**](#configuración-de-instancia-3-\(s7\))
-
-[**1\. Promtail	20**](#promtail-1)
-
-[a. Configuración de Promtail	20](#configuración-de-promtail-1)
-
-[b. Envío de datos	21](#envío-de-datos-1)
-
-[c. Regla AWS	22](#regla-aws-1)
-
-[d. Comprobar	22](#comprobar-1)
-
-[**CONFIGURACIÓN DE INSTANCIA 2	24**](#configuración-de-instancia-2-1)
-
-[**1\. Promtail	24**](#promtail-2)
-
-[a. Configuración de Promtail	24](#configuración-de-promtail-2)
-
-[b. Envío de datos	25](#envío-de-datos-2)
-
-[c. Comprobar	26](#comprobar-2)
-
-# 
-
-# **S5-01 \- Desplegar Grafana y Loki** {#s5-01---desplegar-grafana-y-loki}
-
-## **CONFIGURACIÓN DE INSTANCIA 2** {#configuración-de-instancia-2}
-
-1. ### **MONITOREAR** {#monitorear}
+### Monitorizar
 
    
 
-1. #### **Creación de directorios** {#creación-de-directorios}
-
+#### Creación de directorios
      
    Crearemos una carpeta para realizar este sprint, lo llamaremos monitoratge  
      
@@ -109,7 +76,7 @@ Javier \- Giuseppe Suarez
          mkdir loki-config   
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/crear-directorio2-inst2.png)
 
-2. #### **Creación de archivos de configuración** {#creación-de-archivos-de-configuración}
+#### **Creación de archivos de configuración**
 
      
    Dentro del anterior directorio que hemos creado, crearemos un archivo yaml. que contendrá lo siguiente  
@@ -141,7 +108,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/loki-config.png)
 
-3. #### **Crear nuevo docker** {#crear-nuevo-docker}
+#### **Crear nuevo docker**
 
      
    Crearemos un nuevo docker para levantar el Grafana y Loki  
@@ -189,7 +156,7 @@ Javier \- Giuseppe Suarez
 
       ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/docker-config.png)
 
-5. #### **Lanzar docker y comprobamos** {#lanzar-docker-y-comprobamos}
+#### **Lanzar docker y comprobamos**
 
      
    Ahora lanzaremos el docker   
@@ -202,10 +169,10 @@ Javier \- Giuseppe Suarez
 
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/estado-dockers.png)
 
-2. ### **FIREWALL** {#firewall}
+### **FIREWALL**
 
 
-1. #### **Crearemos nuevas reglas de Firewall** {#crearemos-nuevas-reglas-de-firewall}
+#### **Crearemos nuevas reglas de Firewall**
 
      
    Abriremos el puerto del Grafana que es el 3000  
@@ -232,17 +199,17 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/verificar-firewall.png)  
 
-3. ### **REGLA DE AWS** {#regla-de-aws}
+### **REGLA DE AWS**
    
-1. #### **Crearemos la regla en AWS** {#crearemos-la-regla-en-aws}
+#### **Crearemos la regla en AWS**
      
    Ahora en AWS creamos dos nuevas reglas una para GRAFANA y otro para LOKI, para podernos conectarnos  
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-AWS.png)  
 
-4. ### **PRUEBAS** {#pruebas}
+### **PRUEBAS**
 
-1. #### **Grafana** {#grafana}
+#### **Grafana**
      
    Ahora probamos a acceder a la página web de Grafana que es esta
    
@@ -256,7 +223,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/contra-grafana.png)  
 
-3. #### **Conectar con Loki**  {#conectar-con-loki}
+    #### **Conectar con Loki**
 
    Ahora lo conectaremos con nuestro receptor de logs que seria Loki en nuestro caso  
      
@@ -314,13 +281,12 @@ Javier \- Giuseppe Suarez
 
    # 
 
-# **S5-07 \- Validación completa del sistema** {#s5-07---validación-completa-del-sistema}
+# **S5-07 - Validación completa del sistema**
 
-## **CONFIGURACIÓN DE INSTANCIA 1** {#configuración-de-instancia-1}
+## **CONFIGURACIÓN DE INSTANCIA 1**
 
-1. ### **Promtail** {#promtail}
+### **Promtail – Instancia 1**
 
-1. #### **Configuración de Promtail** {#configuración-de-promtail}
 
      
    Creamos una carpeta llamada promtail  
@@ -361,7 +327,7 @@ Javier \- Giuseppe Suarez
      
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/config-grafana-inst1.png)   
 
-3. ####  **Envío de datos** {#envío-de-datos}
+####  **Envío de datos**
 
    Ejecuta este comando para que empiece a enviar datos
 
@@ -379,7 +345,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/correr-docker-inst1.png)   
 
-4. #### **Regla AWS** {#regla-aws}
+#### **Regla AWS**
 
      
    Ahora debemos de añadir la siguiente regla en AWS para que funcione  
@@ -388,7 +354,7 @@ Javier \- Giuseppe Suarez
      
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-AWS-inst1.png)   
 
-5. ####  **Comprobar** {#comprobar}
+####  **Comprobar**
 
    Como en la configuración de la instancia pusimos que se cree una etiqueta llamado instancia nos aparece aqui, ademas de poder ver que la que se ha enviado es la Instancia 1  
 
@@ -398,11 +364,10 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/93c794d202f25d26658fd044e095e8c5a4e50ce4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/show-logs.png)   
 
-   ## **CONFIGURACIÓN DE INSTANCIA 3 (S7)** {#configuración-de-instancia-3-(s7)}
+## **CONFIGURACIÓN DE INSTANCIA 3 (S7)**
 
-1. ### **Promtail** {#promtail-1}
+### **Promtail – Instancia 3**
 
-1. #### **Configuración de Promtail** {#configuración-de-promtail-1}
 
      
    Creamos una carpeta llamada promtail  
@@ -443,7 +408,7 @@ Javier \- Giuseppe Suarez
      
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/config-yaml-inst3.png)   
 
-2. #### **Envío de datos** {#envío-de-datos-1}
+#### **Envío de datos**
 
    Ejecuta este comando para que empiece a enviar datos
 
@@ -462,7 +427,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/correr-docker-inst3.png)   
 
-3. #### **Regla AWS** {#regla-aws-1}
+#### **Regla AWS**
 
      
    Ahora debemos de añadir la siguiente regla en AWS para que funcione  
@@ -471,7 +436,7 @@ Javier \- Giuseppe Suarez
      
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/firewall-AWS-inst3.png)   
 
-4. #### **Comprobar** {#comprobar-1}
+#### **Comprobar**
 
    Como en la configuración de la instancia pusimos que se cree una etiqueta llamado instancia nos aparece aqui, ademas de poder ver que la que se ha enviado es la Instancia 3  
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/label-inst3.png)   
@@ -479,11 +444,9 @@ Javier \- Giuseppe Suarez
    Nos sale los logs   
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/519c8faf365e9f424ba3843462b7dd600cd94ac4/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/show-logs-inst3.png)      
 
-   ## **CONFIGURACIÓN DE INSTANCIA 2** {#configuración-de-instancia-2-1}
+   ## **CONFIGURACIÓN DE INSTANCIA 2 – Promtail**
 
-1. ### **Promtail** {#promtail-2}
-
-1. #### **Configuración de Promtail** {#configuración-de-promtail-2}
+### **Promtail – Instancia 2**
 
      
    Creamos una carpeta llamada promtail  
@@ -524,7 +487,7 @@ Javier \- Giuseppe Suarez
      
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/04a8c2566fb75a07ee44d26d007c76d7c21f632e/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/yaml-inst2.png)         
 
-2. ####  **Envío de datos** {#envío-de-datos-2}
+####  **Envío de datos**
 
    Ejecuta este comando para que empiece a enviar datos
 
@@ -542,7 +505,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/04a8c2566fb75a07ee44d26d007c76d7c21f632e/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/docker-inst2.png)         
 
-3. #### **Comprobar** {#comprobar-2}
+#### **Comprobar**
 
    Como en la configuración de la instancia pusimos que se cree una etiqueta llamado instancia nos aparece aqui, ademas de poder ver que la que se ha enviado es la Instancia 2  
 
