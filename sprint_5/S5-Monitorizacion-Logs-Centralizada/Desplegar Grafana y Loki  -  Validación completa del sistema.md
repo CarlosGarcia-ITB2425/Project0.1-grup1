@@ -1,6 +1,6 @@
 # **Desplegar Grafana y Loki  \-  Validación completa del sistema**
 
-![][image1]
+[![][image1]](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/4ce77d6cf7c91060f26f8b4503ef96d69b9c49d8/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/PORTADA.png)
 
 **N°:** GRUPO 1
 
