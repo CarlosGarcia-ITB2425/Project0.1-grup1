@@ -223,7 +223,7 @@ Javier \- Giuseppe Suarez
 
    ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/39db87dedf17bb41cb42df343bf712519dd9b74d/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/contra-grafana.png)  
 
-    #### **Conectar con Loki**
+  #### **Conectar con Loki**
 
    Ahora lo conectaremos con nuestro receptor de logs que seria Loki en nuestro caso  
      
