@@ -1,4 +1,4 @@
-# **Desplegar Grafana y Loki  \-  Validación completa del sistema**
+# **Desplegación Grafana y Loki  \-  Validación completa del sistema**
 
 ![](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/7cc34c0d6f79cc5b801297d1be9df3821c75a5ee/sprint_5/S5-Monitorizacion-Logs-Centralizada/img/PORTADA.png)
 
