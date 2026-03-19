@@ -12,7 +12,7 @@ Haz clic en los enlaces para acceder directamente.
 ## Sprint 1
  Carpeta: `Sprint1/`
 
--  [Acta de reunión y planificacion del sprint 1](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/Sprint_1/docs/ACTA_y_Planificacion_de_los_sprint_1/ACTA%20y%20Planificacion%20de%20los%20sprint%201.md)
+-  [Acta de sprint y planificacion del sprint 1](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/Sprint_1/docs/ACTA_y_Planificacion_de_los_sprint_1/ACTA%20y%20Planificacion%20de%20los%20sprint%201.md)
 -  [Creación del servidor base 1](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/Sprint_1/docs/Creacion_del_servidor_base_1_AWS/Creacion%20del%20servidor%20base%201%20(AWS).md)
 -  [Instalación y configuración de MYSQL](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/Sprint_1/docs/INSTALCION_Y_CONFIGURACION_DE_MYSQL/INSTALCION%20Y%20CONFIGURACION%20DE%20MYSQL.md)
 -  [Comprobacion de subida de imagenes](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/Sprint_1/docs/Subida_de_Imagenes/Subida_de_Imagenes.md)
