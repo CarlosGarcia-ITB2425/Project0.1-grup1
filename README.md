@@ -1,44 +1,64 @@
-#  Índice de Documentación del Proyecto - Grupo 1
+# README – Índice de Documentación por Sprints
 
-Bienvenido al índice central de documentos. Aquí puedes acceder rápidamente a los archivos generados en cada fase del desarrollo.
-
----
-
-##  Sprints de Desarrollo
-
-### 🏁 [Sprint 1](./Sprint1/)
-*Documentación inicial, análisis y primeros diseños.*
-- [ Acta de Constitución](./Sprint1/acta_constitucion.pdf)
-- [ Definición del Producto](./Sprint1/producto.md)
-- [ Backlog del Sprint 1](./Sprint1/backlog_s1.xlsx)
-
-### 📈 [Sprint 2](./Sprint2/)
-*Desarrollo del núcleo, diagramas de arquitectura y prototipos.*
-- [ Diagrama de Clases](./Sprint2/diagrama_clases.png)
-- [ Prototipo de Interfaz (Figma)](./Sprint2/prototipo.md)
-- [ Informe de Seguimiento](./Sprint2/seguimiento_s2.pdf)
-
-### 🛠️ [Sprint 3](./Sprint3/)
-*Implementación de funcionalidades avanzadas y pruebas.*
-- [ Plan de Pruebas](./Sprint3/plan_pruebas.pdf)
-- [ Manual de Instalación](./Sprint3/manual_instalacion.md)
-- [ Guía de Usuario](./Sprint3/guia_usuario.pdf)
+Bienvenido al repositorio del proyecto.  
+Este documento actúa como un **índice centralizado** para localizar rápidamente todos los documentos generados en cada sprint.
 
 ---
 
-##  Estructura General de Documentos
-Si buscas archivos específicos por categoría:
+## Estructura del Proyecto
 
-* **[ Documentación Técnica](./docs/tecnica/)**: Arquitectura, API y Base de Datos.
-* **[ Gestión de Proyecto](./docs/gestion/)**: Cronogramas y presupuestos.
-* **[ Recursos Visuales](./docs/assets/)**: Logos, iconos y diseños.
+Cada sprint contiene su propia documentación organizada en carpetas.  
+Haz clic en los enlaces para acceder directamente.
 
 ---
 
-##  Cómo mantener este índice
-1. Si añades un nuevo documento, agrégalo a la lista del Sprint correspondiente.
-2. Asegúrate de usar **rutas relativas** (ej: `./SprintX/archivo.pdf`) para que los enlaces funcionen correctamente en GitHub.
-3. Si cambias el nombre de una carpeta, recuerda actualizar el enlace aquí.
+## Sprint 1
+ Carpeta: `Sprint1/`
+
+-  [Acta de reunión](./Sprint1/Acta_Reunion.md)
+-  [Planificación](./Sprint1/Planificacion.md)
+-  [Requisitos](./Sprint1/Requisitos.md)
+-  [Diseño inicial](./Sprint1/Diseno.md)
 
 ---
-*Última actualización: Marzo 2026*
+
+##  Sprint 2
+ Carpeta: `Sprint2/`
+
+-  [Acta de reunión](./Sprint2/Acta_Reunion.md)
+-  [Avances](./Sprint2/Avances.md)
+-  [Actualización de requisitos](./Sprint2/Requisitos_Update.md)
+-  [Diseño técnico](./Sprint2/Diseno_Tecnico.md)
+
+---
+
+##  Sprint 3
+ Carpeta: `Sprint3/`
+
+-  [Acta de reunión](./Sprint3/Acta_Reunion.md)
+-  [Implementación](./Sprint3/Implementacion.md)
+-  [Pruebas](./Sprint3/Testing.md)
+-  [Resultados](./Sprint3/Resultados.md)
+
+---
+
+## Sprint 4
+ Carpeta: `Sprint4/`
+
+-  [Acta de reunión](./Sprint4/Acta_Reunion.md)
+-  [Versión final](./Sprint4/Version_Final.md)
+-  [Documentación final](./Sprint4/Documentacion_Final.md)
+-  [Conclusiones](./Sprint4/Conclusiones.md)
+
+---
+
+## Sprint 5
+ Carpeta: `Sprint5/`
+
+-  [Acta de reunión](./Sprint5/Acta_Reunion.md)
+-  [Mejoras finales](./Sprint5/Mejoras_Finales.md)
+-  [Correcciones](./Sprint5/Correcciones.md)
+-  [Entrega final](./Sprint5/Entrega_Final.md)
+
+
+
