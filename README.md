@@ -37,7 +37,7 @@ Haz clic en los enlaces para acceder directamente.
 
 ## Sprint 4
  Carpeta: `Sprint4/`
--  [Acta de sprint 4 y planificacion]()
+-  [Acta de sprint 4 y planificacion](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/379efbe333c67a79ef1b6ead141c3669b5880aef/sprint_4/ACTA%20DE%20SPRINT%204%20Y%20PLANIFICACION/Acta%20de%20sprint-4%20y%20planificacion.md)
 -  [Hardening profecional de MYSQL](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/sprint_4/HARDENING%20PROFESIONAL%20DE%20MYSQL/HARDENING%20PROFESIONAL%20DE%20MYSQL.md)
 -  [Hardening profecional del sistema operativo](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/sprint_4/HARDENING%20PROFESIONAL%20DE%20SISTEMA%20OPERATIVO/HARDENING%20PROFESIONAL%20DEL%20SISTEMA%20OPERATIVO.md)
 -  [Hardening web (WAF)](https://github.com/CarlosGarcia-ITB2425/Project0.1-grup1/blob/8d35766381346f1740f19e38445c3749344617ff/sprint_4/Hardening%20Web%20(WAF)/Hardening%20Web%20(WAF).md)
