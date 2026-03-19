@@ -1,4 +1,4 @@
-# README – Índice de Documentación por Sprints
+# Índice de Documentación por Sprints
 
 ---
 
